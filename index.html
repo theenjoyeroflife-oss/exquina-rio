@@ -74,6 +74,7 @@ header.top > div:first-child{padding-right:86px}
 nav.tabs{display:flex; gap:4px; flex-wrap:wrap}
 nav.tabs button{border:0; background:none; padding:6px 10px; border-radius:999px; cursor:pointer; color:var(--muted); font-weight:500}
 nav.tabs button[aria-selected="true"]{background:var(--ink); color:var(--bg)}
+@media (max-width:430px){ nav.tabs{gap:0} nav.tabs button{padding:6px 7px; font-size:14px} }
 nav.tabs .n{font-variant-numeric:tabular-nums; font-size:12px; opacity:.8; margin-left:4px}
 
 .calcadao{height:24px; margin-top:16px; background:var(--ink); opacity:.85;
@@ -251,6 +252,7 @@ footer p{margin:0 0 8px; max-width:68ch}
       <button role="tab" id="t-voce" data-tab="voce" aria-selected="false">Pra você<span class="n" id="n-voce"></span></button>
       <button role="tab" id="t-mapa" data-tab="mapa" aria-selected="false">Mapa</button>
       <button role="tab" id="t-lugares" data-tab="lugares" aria-selected="false">Lugares</button>
+      <button role="tab" id="t-segredo" data-tab="segredo" aria-selected="false">Né segredo</button>
     </nav>
   </header>
   <div class="calcadao" aria-hidden="true"></div>
@@ -449,6 +451,13 @@ const V = [
  {id:"ssenado", n:"Samba do Senado", b:"Centro", r:"centro", t:"bar", bq:1, a:"Rua do Senado, 1", lat:-22.9072, lng:-43.1822, cv:{p:"R$ 10 a 20", s:"cvNoite", m:"média de bar de bairro, Rio Times set/2026", est:1}}
 ];
 
+// Né segredo: bares e botecos sem programação de música, só para sentar e ficar.
+// Mesmo formato de V (sem eventos), com x = uma ou duas frases em tom de guia. Não entram na agenda nem em Lugares.
+const SEG = [
+ {id:"tioruy", n:"Tio Ruy Beer House", b:"Gávea", r:"sul", t:"bar", a:"Av. Padre Leonel Franca, perto do Planetário", lat:-22.9772, lng:-43.2300,
+   x:"Bar de cerveja perto do Planetário, com mesas ao ar livre e TV para ver jogo. Aberto até 23h."}
+];
+
 // Fotos dos lugares (aparecem no dropdown). Chave = id do lugar em V.
 // src: imagem ~640px; pag: página da foto (crédito); cred: autor e licença.
 // Só fotos de licença livre (Wikimedia Commons) ou enviadas/autorizadas. Se a imagem não carregar, o bloco some.
@@ -558,7 +567,8 @@ const D = [
  {id:"d-ssen-1101", dt:"2026-11-01", v:"ssenado", t:"Pré-feriado do Samba do Senado", c:["samba","pagode"], h:"15:00", p:"Cortesia (retirar antes)", f:1, dur:6, s:"ig:sambadoxoxo", x:"Pagode da Garagem, Quintal da Magia, Samba do Xoxó e Arruda numa tarde só."}
 ];
 const ALL = E.concat(D);
-const VBY = Object.fromEntries(V.map(v=>[v.id,v]));
+const VBY = Object.fromEntries(V.concat(SEG).map(v=>[v.id,v]));
+const isSeg = v => SEG.includes(v);
 function srcUrl(s){ if(!s) return ""; if(s.startsWith("ig:")) return "https://www.instagram.com/"+s.slice(3)+"/"; return SRC[s]||""; }
 const WD = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
 const WDS = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
@@ -660,7 +670,7 @@ function mapsUrl(v){ return "https://www.google.com/maps/search/?api=1&query="+e
 
 // ---------- state ----------
 const ST = { tab:"agenda", when:"prox", free:false, near:false, cat:null, reg:null, open:new Set(), mapZoom:"perto", mapSel:null };
-try{ const t = load("tab"); if(t && ["agenda","voce","mapa","lugares"].includes(t)) ST.tab = t; }catch(e){}
+try{ const t = load("tab"); if(t && ["agenda","voce","mapa","lugares","segredo"].includes(t)) ST.tab = t; }catch(e){}
 const WHEN = [["prox","Em breve"],["agora","Agora"],["hoje","Hoje"],["amanha","Amanhã"],["fds","Fim de semana"],["7d","7 dias"]];
 
 // ---------- perto de mim ----------
@@ -804,7 +814,7 @@ function passFilters(x, ignoreHidden){
 // ---------- render: bar ----------
 function renderBar(){
   const bar = document.getElementById("bar");
-  bar.hidden = (ST.tab==="lugares" || ST.tab==="voce");
+  bar.hidden = (ST.tab==="lugares" || ST.tab==="voce" || ST.tab==="segredo");
   const wr = document.getElementById("whenRow");
   wr.innerHTML = `<button class="chip near" id="nearBtn" aria-pressed="${ST.near}">${GEO.status==="wait"?"Localizando…":"📍 Perto de mim"}</button><span class="sep"></span>`
     + WHEN.map(([k,l])=>`<button class="chip when" data-when="${k}" aria-pressed="${ST.when===k}">${l}</button>`).join("")
@@ -950,6 +960,24 @@ function viewLugares(){
   return html;
 }
 
+function viewSegredo(){
+  let html = `<p class="note">Bares e botecos sem roda nem show, bons para sentar e ficar. Posições no mapa são aproximadas.</p>`;
+  for(const [rk, rl] of Object.entries(REGS)){
+    const vs = SEG.filter(v=>v.r===rk).sort((a,b)=>bqOrd(a)-bqOrd(b) || a.n.localeCompare(b.n,"pt"));
+    if(!vs.length) continue;
+    html += `<div class="reg"><h2>${rl}</h2>`;
+    for(const v of vs){
+      const ig = v.ig ? `<a href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${esc(v.ig)}</a>` : "";
+      html += `<div class="place" id="p-${v.id}"><h3>${esc(v.n)}</h3>
+        <div class="sub">${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
+        <ul>${v.x?`<li><span class="when">${esc(v.x)}</span></li>`:""}${cervaHtml(v,"li")}</ul>
+        <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Google Maps</a>${ig}</div></div>`;
+    }
+    html += `</div>`;
+  }
+  return html;
+}
+
 // Map: Leaflet + CARTO tiles (OpenStreetMap data), loaded on first visit to the tab.
 const EXT = {
   perto:[[-22.992,-43.250],[-22.890,-43.163]],
@@ -974,7 +1002,7 @@ function mapVisible(){
     const evs = ALL.filter(e=>e.v===v.id && !S.hidden.has(e.id));
     if(!evs.length) return !ST.free && (!ST.cat || (v.cats||[]).includes(ST.cat)) && !!v.var;
     return evs.some(e=> (!ST.free || e.f) && (!ST.cat || e.c.includes(ST.cat))) ;
-  });
+  }).concat(ST.free || ST.cat ? [] : SEG.filter(v=> !ST.reg || v.r===ST.reg));
 }
 function mountMap(){
   const slot = document.getElementById("mapslot");
@@ -1014,6 +1042,7 @@ function mountMap(){
       const hasEv = ALL.some(e=>e.v===v.id);
       const isSel = v.id===ST.mapSel;
       const style = isSel ? {fillColor:gel, color:ink, weight:2, fillOpacity:1, radius:10}
+        : isSeg(v) ? {fillColor:muted, color:surf, weight:2, fillOpacity:1, radius:6}
         : hasEv ? {fillColor:azul, color:surf, weight:2, fillOpacity:1, radius:7}
         : {fillColor:surf, color:muted, weight:2, fillOpacity:1, radius:7};
       L.circleMarker([v.lat, v.lng], style).bindTooltip(v.n, {direction:"top", offset:[0,-6]})
@@ -1029,14 +1058,14 @@ function mountMap(){
 }
 function viewMapa(data){
   const vis = mapVisible();
-  let card = `<p class="note">Toque num ponto para ver o lugar e as próximas datas. Pontos vazados têm programação variável.</p>`;
+  let card = `<p class="note">Toque num ponto para ver o lugar e as próximas datas. Pontos vazados têm programação variável; os cinza são do Né segredo.</p>`;
   if(ST.mapSel && VBY[ST.mapSel]){
     const v = VBY[ST.mapSel];
     const next = data.list.filter(x=>x.v.id===v.id && passFilters(x)).slice(0,4);
     const items = next.map(x=>`<li><span><b>${x.state==="now"?"Agora":dayLabel(x.day)}, ${x.e.ap?"≈":""}${hhmm(x.start)}</b> · ${esc(x.e.t)} <span class="when">· ${esc(x.e.p)}</span></span></li>`).join("");
     card = `<div class="place"><h3>${esc(v.n)}</h3><div class="sub">${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
-      <ul>${items || (v.var?`<li><span class="when">${esc(v.var)}</span></li>`:`<li><span class="when">Nada nas próximas duas semanas com esses filtros.</span></li>`)}${cervaHtml(v,"li")}</ul>
-      <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Abrir no Google Maps</a><button class="linkbtn" data-goto="${v.id}">Ver em Lugares</button></div></div>`;
+      <ul>${items || (v.var||v.x?`<li><span class="when">${esc(v.var||v.x)}</span></li>`:`<li><span class="when">Nada nas próximas duas semanas com esses filtros.</span></li>`)}${cervaHtml(v,"li")}</ul>
+      <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Abrir no Google Maps</a><button class="linkbtn" data-goto="${v.id}">Ver em ${isSeg(v)?"Né segredo":"Lugares"}</button></div></div>`;
   }
   return `<div class="mapwrap">
     <div class="maptools">
@@ -1108,7 +1137,7 @@ function render(){
   document.getElementById("n-voce").textContent = nv ? nv : "";
   renderBar();
   const view = document.getElementById("view");
-  patchView(view, ST.tab==="agenda" ? viewAgenda(data) : ST.tab==="voce" ? viewVoce(data) : ST.tab==="mapa" ? viewMapa(data) : viewLugares());
+  patchView(view, ST.tab==="agenda" ? viewAgenda(data) : ST.tab==="voce" ? viewVoce(data) : ST.tab==="mapa" ? viewMapa(data) : ST.tab==="segredo" ? viewSegredo() : viewLugares());
   fillAds();
   if(ST.tab==="mapa") mountMap();
 }
@@ -1155,7 +1184,7 @@ document.addEventListener("click", ev=>{
   if(d.unhide){ if(d.unhide==="all") S.hidden.clear(); else S.hidden.delete(d.unhide); persist(); render(); return; }
   if(d.zoom==="eu"){ const go = ()=>{ ST.mapZoom = "eu"; M.zoomKey = null; }; if(GEO.pos){ go(); render(); } else if(GEO.status!=="wait") askGeo(go); return; }
   if(d.zoom){ ST.mapZoom = d.zoom; M.zoomKey = null; render(); return; }
-  if(d.goto){ ST.tab = "lugares"; render(); const el = document.getElementById("p-"+d.goto); if(el) el.scrollIntoView({block:"start"}); return; }
+  if(d.goto){ ST.tab = isSeg(VBY[d.goto]) ? "segredo" : "lugares"; render(); const el = document.getElementById("p-"+d.goto); if(el) el.scrollIntoView({block:"start"}); return; }
   if(d.pin){ ST.mapSel = ST.mapSel===d.pin ? null : d.pin; render(); return; }
 });
 document.addEventListener("change", ev=>{
