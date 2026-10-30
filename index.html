@@ -360,7 +360,10 @@ const SRC = {
   baixocopa: "https://tasendo.com.br/rio-de-janeiro/festas/forro-de-roda-no-baixo-copa-pub-06-06-26",
   batuq: "https://www.sympla.com.br/evento/batuq/3515036",
   imperio: "https://sopacultural.com/?p=112997",
-  nevada: "https://agendaculturalriodejaneiro.com/2026/07/18/karaoke-no-rio-de-janeiro/"
+  nevada: "https://agendaculturalriodejaneiro.com/2026/07/18/karaoke-no-rio-de-janeiro/",
+  segRiotur: "https://www.riotur.rio/gastronomia/botecos/",
+  segTombados: "https://www.tudogostoso.com.br/noticias/bares-tombados-do-rio-de-janeiro-conheca-o-roteiro-de-botecos-cariocas-a9722.htm",
+  segTimeout: "https://www.timeout.com/pt/rio-de-janeiro/restaurantes/os-melhores-bares-do-rio-de-janeiro"
 };
 
 const CATS = {
@@ -455,7 +458,64 @@ const V = [
 // Mesmo formato de V (sem eventos), com x = uma ou duas frases em tom de guia. Não entram na agenda nem em Lugares.
 const SEG = [
  {id:"tioruy", n:"Tio Ruy Beer House", b:"Gávea", r:"sul", t:"bar", a:"Av. Padre Leonel Franca, perto do Planetário", lat:-22.9772, lng:-43.2300,
-   x:"Bar de cerveja perto do Planetário, com mesas ao ar livre e TV para ver jogo. Aberto até 23h."}
+   x:"Bar de cerveja perto do Planetário, com mesas ao ar livre e TV para ver jogo. Aberto até 23h."},
+ // Zona Sul
+ {id:"guimas", n:"Guimas", b:"Gávea", r:"sul", t:"bar", a:"Rua José Roberto Macedo Soares, 5 · Baixo Gávea", lat:-22.9760, lng:-43.2272, src:"segTimeout",
+   x:"Bistrô-bar de 1981 no Baixo Gávea, com chope Brahma, pratos de bistrô e carta de vinhos."},
+ {id:"jobi", n:"Jobi", b:"Leblon", r:"sul", t:"bar", bq:1, a:"Av. Ataulfo de Paiva, 1166, loja B", lat:-22.9845, lng:-43.2240, src:"segRiotur",
+   x:"Boteco de 1956 no Baixo Leblon, conhecido pelo chope e pelo bolinho de bacalhau. Fecha tarde."},
+ {id:"braca", n:"Bracarense", b:"Leblon", r:"sul", t:"bar", bq:1, a:"Rua José Linhares, 85", lat:-22.9850, lng:-43.2232, src:"segRiotur",
+   x:"Clássico do Leblon com gente na calçada; peça o bolinho de aipim com camarão e o sanduíche de pernil."},
+ {id:"academia", n:"Academia da Cachaça", b:"Leblon", r:"sul", t:"bar", a:"Rua Conde Bernadotte, 26", lat:-22.9832, lng:-43.2247, src:"segRiotur",
+   x:"Mais de cem cachaças e uma feijoada bem falada."},
+ {id:"barlagoa", n:"Bar Lagoa", b:"Lagoa", r:"sul", t:"bar", a:"Av. Epitácio Pessoa, 1674", lat:-22.9800, lng:-43.2030, src:"segTombados",
+   x:"Bar e restaurante à beira da Lagoa, com letreiro de neon e cozinha que mistura pratos brasileiros e alemães."},
+ {id:"pavao", n:"Pavão Azul", b:"Copacabana", r:"sul", t:"bar", bq:1, a:"Rua Hilário de Gouveia, 71", lat:-22.9675, lng:-43.1855, src:"segRiotur",
+   x:"Pé-sujo de 1957 a duas quadras da praia, famoso pelas pataniscas de bacalhau."},
+ {id:"perola", n:"Adega Pérola", b:"Copacabana", r:"sul", t:"bar", bq:1, a:"Rua Siqueira Campos, 138", lat:-22.9667, lng:-43.1878, src:"segTimeout",
+   x:"Adega portuguesa de 1957 com mais de 50 petiscos no balcão de vidro e chope barato."},
+ {id:"sats", n:"Galeto Sat's", b:"Copacabana", r:"sul", t:"bar", a:"Rua Barata Ribeiro, 7, loja D", lat:-22.9634, lng:-43.1760, src:"segRiotur",
+   x:"Galeto na brasa desde 1962, chope gelado e carta de cachaças. Tem também em Botafogo e no Joá."},
+ {id:"velha", n:"Adega da Velha", b:"Botafogo", r:"sul", t:"bar", bq:1, a:"Rua Paulo Barreto, 25", lat:-22.9548, lng:-43.1866, src:"segRiotur",
+   x:"Antiga adega portuguesa que virou bar nordestino nos anos 1980: baião de dois, cachaças e cervejas."},
+ {id:"urca", n:"Bar Urca", b:"Urca", r:"sul", t:"bar", a:"Rua Cândido Gaffrée, 205", lat:-22.9446, lng:-43.1622, src:"segRiotur",
+   x:"Desde 1939. Compra-se no balcão e bebe-se na mureta, de frente para a baía."},
+ {id:"lamas", n:"Café Lamas", b:"Flamengo", r:"sul", t:"bar", a:"Rua Marquês de Abrantes, 18", lat:-22.9335, lng:-43.1765, src:"segTombados",
+   x:"Bar e restaurante de 1874, que saiu do Largo do Machado e fica aberto até de madrugada."},
+ {id:"cardosao", n:"Armazém Cardosão", b:"Laranjeiras", r:"sul", t:"bar", bq:1, a:"Rua Cardoso Júnior, 312", lat:-22.9365, lng:-43.1905, src:"segTombados",
+   x:"Mercearia e bar de bairro, cheio no fim de semana por causa da feijoada."},
+ // Centro e Lapa
+ {id:"brasil", n:"Bar Brasil", b:"Lapa", r:"centro", t:"bar", a:"Av. Mem de Sá, 90", lat:-22.9132, lng:-43.1820, src:"segRiotur",
+   x:"O \"Alemão da Lapa\", aberto em 1907: chope e pratos alemães num casarão do século XIX."},
+ {id:"capela", n:"Nova Capela", b:"Lapa", r:"centro", t:"bar", a:"Av. Mem de Sá, 96", lat:-22.9133, lng:-43.1824, src:"segRiotur",
+   x:"Mais de cem anos na Lapa; o prato da casa é o cabrito assado."},
+ {id:"coimbra", n:"Adega Flor de Coimbra", b:"Lapa", r:"centro", t:"bar", bq:1, a:"Rua Teotônio Regadas, 34", lat:-22.9142, lng:-43.1795, src:"segTombados",
+   x:"Adega portuguesa com mais de 70 anos, boa para bolinho de bacalhau e peixe na brasa."},
+ {id:"cosmo", n:"Cosmopolita", b:"Lapa", r:"centro", t:"bar", a:"Travessa do Mosqueira, 4", lat:-22.9140, lng:-43.1808, src:"segTombados",
+   x:"Bar e restaurante de 1926 onde nasceu o filé Oswaldo Aranha."},
+ {id:"amarelinho", n:"Amarelinho da Cinelândia", b:"Centro", r:"centro", t:"bar", a:"Praça Floriano, 55-B", lat:-22.9105, lng:-43.1760, src:"segRiotur",
+   x:"Mesas na calçada da Cinelândia; chope e ponto de encontro depois do trabalho."},
+ {id:"paladino", n:"Casa Paladino", b:"Centro", r:"centro", t:"bar", bq:1, a:"Rua Uruguaiana, 224", lat:-22.9020, lng:-43.1800, src:"segTombados",
+   x:"Armazém e bar de 1906, famoso pelas omeletes e sanduíches no almoço."},
+ {id:"saothiago", n:"Armazém São Thiago (Bar do Gomes)", b:"Santa Teresa", r:"centro", t:"bar", bq:1, a:"Rua Áurea, 26", lat:-22.9200, lng:-43.1880, src:"segTombados",
+   x:"Bar de 1919 que mantém as prateleiras de armazém, com petiscos clássicos de boteco."},
+ // Zona Norte
+ {id:"frente", n:"Bar da Frente", b:"Praça da Bandeira", r:"norte", t:"bar", bq:1, a:"Rua Barão de Iguatemi, 388", lat:-22.9115, lng:-43.2163, src:"segRiotur",
+   x:"Boteco tradicional da Barão de Iguatemi, conhecido pelo croquete de carne e pelo fondue de coxinha."},
+ {id:"aconchego", n:"Aconchego Carioca", b:"Praça da Bandeira", r:"norte", t:"bar", a:"Rua Barão de Iguatemi, 245", lat:-22.9107, lng:-43.2140, src:"segRiotur",
+   x:"Casa da chef Kátia Barbosa, onde surgiu o bolinho de feijoada."},
+ {id:"momo", n:"Bar do Momo", b:"Tijuca", r:"norte", t:"bar", bq:1, a:"Rua General Espírito Santo Cardoso, 50, loja A", lat:-22.9215, lng:-43.2340, src:"segRiotur",
+   x:"Botequim de 1972, famoso pelo bolinho de arroz e pelas batidas de coco e maracujá."},
+ {id:"bargema", n:"Bar da Gema", b:"Maracanã", r:"norte", t:"bar", bq:1, a:"Rua Dona Zulmira, 134", lat:-22.9135, lng:-43.2330, src:"segRiotur",
+   x:"Boteco de casal com coxinha, empada, rabada e feijoada no fim de semana."},
+ {id:"bode", n:"Bode Cheiroso", b:"Maracanã", r:"norte", t:"bar", bq:1, a:"Rua General Canabarro, 218", lat:-22.9128, lng:-43.2250, src:"segRiotur",
+   x:"Perto do Maracanã: feijoada, rabada com agrião e torresmo."},
+ {id:"linguica", n:"Enchendo Linguiça", b:"Grajaú", r:"norte", t:"bar", bq:1, a:"Av. Engenheiro Richard, 2", lat:-22.9210, lng:-43.2560, src:"segRiotur",
+   x:"Mais de 15 petiscos, com destaque para o joelho de porco à pururuca."},
+ {id:"adonis", n:"Velho Adonis", b:"Benfica", r:"norte", t:"bar", bq:1, a:"Rua São Luiz Gonzaga, 2156", lat:-22.8925, lng:-43.2370, src:"segRiotur",
+   x:"Boteco de 1952 com chope cremoso e bolinho de bacalhau à portuguesa."},
+ {id:"cachambeer", n:"Cachambeer", b:"Cachambi", r:"norte", t:"bar", bq:1, a:"Rua Cachambi, 475", lat:-22.8890, lng:-43.2780, src:"segRiotur",
+   x:"Costela no bafo e chope muito gelado."}
 ];
 
 // Fotos dos lugares (aparecem no dropdown). Chave = id do lugar em V.
@@ -968,10 +1028,11 @@ function viewSegredo(){
     html += `<div class="reg"><h2>${rl}</h2>`;
     for(const v of vs){
       const ig = v.ig ? `<a href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${esc(v.ig)}</a>` : "";
+      const src = srcUrl(v.src);
       html += `<div class="place" id="p-${v.id}"><h3>${esc(v.n)}</h3>
         <div class="sub">${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
         <ul>${v.x?`<li><span class="when">${esc(v.x)}</span></li>`:""}${cervaHtml(v,"li")}</ul>
-        <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Google Maps</a>${ig}</div></div>`;
+        <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Google Maps</a>${ig}${src?`<a href="${src}" target="_blank" rel="noopener">Fonte</a>`:""}</div></div>`;
     }
     html += `</div>`;
   }
