@@ -138,8 +138,17 @@ section.day.now h2::before{content:""; width:10px; height:10px; border-radius:50
 @keyframes pulse{50%{box-shadow:0 0 0 7px color-mix(in srgb, var(--gelada) 10%, transparent)}}
 @media (prefers-reduced-motion: reduce){ section.day.now h2::before{animation:none} }
 
-.ev{display:grid; grid-template-columns:62px minmax(0,1fr) auto; gap:4px 14px; padding-block:14px; border-bottom:1px solid var(--line)}
-.ev.going{background:linear-gradient(90deg, color-mix(in srgb, var(--gelada) 16%, transparent), transparent 70%)}
+/* Linhas da agenda e da Saideras: cartões de vidro, como no Né segredo */
+.ev{display:grid; grid-template-columns:62px minmax(0,1fr) auto; gap:4px 14px; position:relative; isolation:isolate;
+  padding:14px 16px; margin-top:10px; border-radius:20px;
+  background:var(--glass-bg); border:1px solid var(--glass-line);
+  box-shadow:var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  -webkit-backdrop-filter:blur(22px) saturate(1.5); backdrop-filter:blur(22px) saturate(1.5)}
+.ev::before{content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(160deg, var(--glass-hi), transparent 55%)}
+.ev.going{border-color:color-mix(in srgb, var(--gelada) 60%, var(--glass-line))}
+.ev.going::before{background:linear-gradient(160deg, color-mix(in srgb, var(--gelada) 22%, transparent), transparent 60%)}
+.ev .det{background:color-mix(in srgb, var(--surface) 55%, transparent); border-color:var(--glass-line); border-radius:14px}
 .time{font-family:var(--f-display); font-weight:800; font-size:26px; line-height:1; font-variant-numeric:tabular-nums; padding-top:2px}
 .time .un{font-size:14px; font-weight:700; color:var(--muted); margin-left:2px; letter-spacing:.02em}
 .ev.sai .acts{align-items:center}
@@ -224,8 +233,9 @@ a.act{text-decoration:none; color:var(--ink)}
 .det .foto figcaption{margin-top:4px; font-size:11px; color:var(--muted)}
 .det .links{display:flex; flex-wrap:wrap; gap:14px; margin-top:6px}
 @media (max-width:560px){
-  .ev{grid-template-columns:52px minmax(0,1fr)}
-  .time{font-size:22px}
+  .ev{grid-template-columns:62px minmax(0,1fr); gap:4px 10px; padding:12px 14px}
+  .time{font-size:21px}
+  .time .ap{font-size:14px}
   .acts{grid-column:2; justify-content:flex-start}
   .cvchip{text-align:left}
   .det{grid-column:1 / -1}
