@@ -25,7 +25,7 @@ Agenda de rodas de samba, choro, jazz, bossa, forró, pagode e karaokê em bares
 
 - `V`: lugares, no formato `{id, n, b (bairro), r: centro|sul|norte|oeste, t: bar|rua|praca|clube|quadra|feira|quintal|laje, a (endereço), lat, lng, ig?}`.
   - Casas sem dia fixo levam `var:"…"`, `cats:[…]` e `src:"chave"` em vez de eventos.
-- `SEG`: bares e botecos sem programação, mostrados só na aba "Né segredo" e no mapa (pontos cinza, somem com filtro de estilo ou grátis). Mesmo formato de `V`, com `x` (uma ou duas frases), `src` opcional (chave de `SRC`) e sem eventos.
+- `SEG`: bares e botecos sem programação, que aparecem na aba "Né segredo" (índice A–Z de todos os bares do site, de `V` e de `SEG`, em cartões de vidro), em Saideras e no mapa (pontos cinza, somem com filtro de estilo ou grátis). Mesmo formato de `V`, com `x` (uma ou duas frases), `src` opcional (chave de `SRC`) e sem eventos.
 - Preço da cerveja (`cv`): todo bar ou boteco novo, em `V` ou `SEG`, já entra com `cv:{p, s, m, est?:1}`. Sem preço real, estime pelo tipo de lugar e marque `est:1`. Para botequim de bairro use "R$ 10 a 20", para botequim do Leblon, Ipanema, Lagoa ou Gávea use "R$ 15 a 25", e para bar-restaurante ou casa de música use "R$ 15 a 30", todos com `s:"cvNoite"`. Pedido do Lucas em 30/10/2026.
 - `E`: programação fixa, no formato `{id, v (id do lugar), t, c:[cats], d:[0=dom…6=sáb], n?:[semanas do mês], h:"HH:MM", ap?:1 (horário aproximado), p (preço), f?:1 (grátis), ck?:1 ("necessário confirmar"), dur (horas), skip?:["AAAA-MM-DD"], s, x}`.
 - `D`: datas avulsas do Instagram, no formato `{id:"d-<lugar>-<MMDD>", dt:"AAAA-MM-DD", …, rep?:[ids de E substituídos], tbd?:1}`.

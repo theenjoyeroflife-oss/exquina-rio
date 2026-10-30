@@ -150,6 +150,34 @@ section.day.now h2::before{content:""; width:10px; height:10px; border-radius:50
 .sai-mais .when{color:var(--muted)}
 .sai-pedir{margin:16px 0 0}
 .pin-ic{vertical-align:-2px; flex:none}
+/* Né segredo: cartões de vidro */
+.gx-ord{display:flex; gap:6px; margin-top:14px}
+.gx-letras{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 10px); z-index:4; margin-top:12px; display:flex; flex-wrap:wrap; gap:2px; padding:6px 8px; border-radius:16px;
+  background:var(--glass-bg); border:1px solid var(--glass-line); box-shadow:var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4); backdrop-filter:blur(18px) saturate(1.4)}
+.gx-letras a{min-width:26px; text-align:center; padding:3px 4px; border-radius:8px; color:var(--ink); text-decoration:none; font-family:var(--f-display); font-weight:800; font-size:15px}
+.gx-letras a:hover{background:var(--glass-hi)}
+.gx-sec{margin-top:22px; scroll-margin-top:70px}
+.gx-sec h2{font-family:var(--f-display); font-weight:800; font-size:30px; margin:0 0 8px; display:flex; align-items:baseline; gap:10px}
+.gx-sec h2 .c{font-family:var(--f-body); font-size:13px; font-weight:500; color:var(--muted)}
+.gx-list{display:grid; gap:10px; margin-top:12px}
+@media (min-width:700px){ .gx-list{grid-template-columns:1fr 1fr} }
+.gx{position:relative; padding:14px 16px; border-radius:20px; isolation:isolate; scroll-margin-top:70px;
+  background:var(--glass-bg); border:1px solid var(--glass-line);
+  box-shadow:var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  -webkit-backdrop-filter:blur(22px) saturate(1.5); backdrop-filter:blur(22px) saturate(1.5)}
+.gx::before{content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(160deg, var(--glass-hi), transparent 55%)}
+.gx-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
+.gx h3{margin:0; font-size:17px; font-weight:600; line-height:1.25}
+.gx .cvchip{order:0; flex:none; flex-basis:auto; padding:0; font-size:15px}
+.gx .cvchip .emo{font-size:20px; vertical-align:-3px}
+.gx-sub{color:var(--muted); font-size:13px; margin-top:3px}
+.gx .meta{margin-top:8px}
+.gx-txt{margin:8px 0 0; font-size:14px; color:var(--muted)}
+.gx-txt b{color:var(--ink); font-weight:600}
+.gx-mais{font-size:12px; color:var(--azul); font-weight:600}
+.gx .links{display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; font-size:13px}
 .time .ap{font-size:16px; color:var(--muted); margin-right:1px; font-weight:600}
 .main{min-width:0}
 .title{all:unset; cursor:pointer; font-weight:600; font-size:17px; line-height:1.25; display:block; text-wrap:pretty}
@@ -794,7 +822,7 @@ function mapsUrl(v){ return "https://www.google.com/maps/search/?api=1&query="+e
 function rotaUrl(v){ return "https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(mapsQuery(v)); }
 
 // ---------- state ----------
-const ST = { tab:"saideras", when:"prox", free:false, near:false, cat:null, reg:null, open:new Set(), mapZoom:"perto", mapSel:null };
+const ST = { segOrd:"az", tab:"saideras", when:"prox", free:false, near:false, cat:null, reg:null, open:new Set(), mapZoom:"perto", mapSel:null };
 try{ const t = load("tab"); if(t && ["saideras","agenda","voce","mapa","lugares","segredo"].includes(t)) ST.tab = t; }catch(e){}
 const WHEN = [["prox","Em breve"],["agora","Agora"],["hoje","Hoje"],["amanha","Amanhã"],["fds","Fim de semana"],["7d","7 dias"]];
 
@@ -1039,9 +1067,11 @@ function renderSections(list, emptyMsg, ads){
 // ---------- views ----------
 function viewAgenda(data){
   let list = data.list.filter(x=>passWhen(x) && passFilters(x));
-  if(ST.near && GEO.pos) list = list.filter(x=>kmTo(x.v)<=GEO.radius).sort((a,b)=> a.day.i-b.day.i || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
+  if(ST.near && GEO.pos) list = list.filter(x=>kmTo(x.v)<=GEO.radius);
+  // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
+  if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Atualizado com o Instagram das casas em 20/10.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${ST.near && GEO.pos ? "" : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
+  const note = `<p class="note"><b>Atualizado com o Instagram das casas em 20/10.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
   const msg = ST.when==="agora" ? "Nenhuma roda no ar agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
@@ -1171,16 +1201,47 @@ function viewSaideras(data){
     + groups.map(g=>`<section class="day"><h2>${g[1]}<span class="c">${g[2].length}</span></h2>${g[2].map(v=>saiRow(v, data)).join("")}</section>`).join("");
 }
 
+// Né segredo: índice de todos os bares do site (com e sem programação), em cartões de vidro.
+// A–Z com letras para pular; com localização dá para ordenar pelo mais perto.
+function idxCard(v, km){
+  const ig = v.ig ? `<a href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${esc(v.ig)}</a>` : "";
+  let linha = "";
+  if(isSeg(v)) linha = v.x ? `<p class="gx-txt">${esc(v.x)}</p>` : "";
+  else {
+    const evs = E.filter(e=>e.v===v.id && !S.hidden.has(e.id));
+    const hoje = buildDays().days[0].iso;
+    const e = evs[0] || D.filter(x=>x.v===v.id && x.dt>=hoje).sort((x,y)=>x.dt.localeCompare(y.dt))[0];
+    linha = e ? `<p class="gx-txt"><b>${esc(e.t)}</b> · ${esc(sched(e).replace(" (data avulsa)",""))}${e.tbd?"":", "+(e.ap?"≈":"")+e.h}${evs.length>1?` <span class="gx-mais">+${evs.length-1}</span>`:""}</p>`
+      : v.var ? `<p class="gx-txt">${esc(v.var)}</p>` : "";
+  }
+  const selo = isSeg(v) ? `<span class="tagp chk">sem programação</span>` : `<span class="tagp ok">com programação</span>`;
+  return `<div class="gx" id="p-${v.id}">
+    <div class="gx-top"><h3>${esc(v.n)}</h3>${cervaCurta(v)}</div>
+    <div class="gx-sub">${km?`<b class="km">${fmtKm(kmTo(v))}</b> · `:""}${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
+    <div class="meta">${v.bq?`<span class="tagp bq">botequim</span>`:""}${selo}</div>
+    ${linha}
+    <div class="links"><a href="${rotaUrl(v)}" target="_blank" rel="noopener">Como chegar</a><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Google Maps</a>${ig}</div>
+  </div>`;
+}
 function viewSegredo(){
-  const byDist = ST.near && GEO.pos;
-  let html = `<p class="note">Bares e botecos sem roda nem show, bons para sentar e ficar. Posições no mapa são aproximadas. ${nearLink()}</p>`;
-  html += (GEO.status==="err" || byDist ? nearNote() : "");
-  const groups = byDist
-    ? [["perto","Do mais perto ao mais longe", SEG.slice().sort((a,b)=>kmTo(a)-kmTo(b))]]
-    : Object.entries(REGS).map(([rk,rl])=>[rk, rl, SEG.filter(v=>v.r===rk).sort((a,b)=>bqOrd(a)-bqOrd(b) || a.n.localeCompare(b.n,"pt"))]);
-  for(const [rk, rl, vs] of groups){
-    if(!vs.length) continue;
-    html += `<div class="reg"><h2>${rl}</h2>${vs.map(v=>placeHtml(v, byDist)).join("")}</div>`;
+  const todos = V.concat(SEG);
+  const perto = ST.segOrd==="perto" && GEO.pos;
+  const ordBtns = `<div class="gx-ord"><button class="chip sm" data-segord="az" aria-pressed="${!perto}">A–Z</button><button class="chip sm" data-segord="perto" aria-pressed="${!!perto}">${GEO.status==="wait"?"Localizando…":`${PIN} Mais perto`}</button></div>`;
+  let html = `<p class="note"><b>Índice de todos os ${todos.length} bares do site</b>, com e sem roda. Os com programação também estão na Agenda. Posições aproximadas.</p>${ordBtns}`;
+  if(GEO.status==="err" && ST.segOrd==="perto") html += nearNote();
+  if(perto){
+    html += `<div class="gx-list">${todos.slice().sort((a,b)=>kmTo(a)-kmTo(b)).map(v=>idxCard(v, true)).join("")}</div>`;
+    return html;
+  }
+  const norm = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase();
+  const nome = v => norm(v.n);
+  const ini = v => { const c = nome(v)[0]; return /[A-Z]/.test(c) ? c : "#"; };
+  const ord = todos.slice().sort((a,b)=>nome(a).localeCompare(nome(b),"pt"));
+  const letras = [...new Set(ord.map(ini))];
+  html += `<nav class="gx-letras" aria-label="Pular para a letra">${letras.map(l=>`<a href="#L-${l}">${l}</a>`).join("")}</nav>`;
+  for(const l of letras){
+    const vs = ord.filter(v=>ini(v)===l);
+    html += `<section class="gx-sec" id="L-${l}"><h2>${l}<span class="c">${vs.length}</span></h2><div class="gx-list">${vs.map(v=>idxCard(v, !!GEO.pos)).join("")}</div></section>`;
   }
   return html;
 }
@@ -1382,6 +1443,7 @@ document.addEventListener("click", ev=>{
   if(t.id==="freeBtn"){ ST.free = !ST.free; render(); return; }
   if(t.id==="nearBtn"){ toggleNear(); return; }
   if(t.id==="saiGeo"){ askGeo(); return; }
+  if(d.segord){ ST.segOrd = d.segord; if(d.segord==="perto" && !GEO.pos && GEO.status!=="wait"){ askGeo(); return; } render(); return; }
   if(t.id==="geoRetry"){ GEO.pos = null; GEO.src = ""; const z = ST.tab==="mapa" ? ()=>{ ST.mapZoom = "eu"; M.zoomKey = null; } : null; askGeo(z); return; }
   if(d.cat){ ST.cat = ST.cat===d.cat ? null : d.cat; render(); return; }
   if(d.reg!==undefined){ ST.reg = (!d.reg || ST.reg===d.reg) ? null : d.reg; render(); return; }
