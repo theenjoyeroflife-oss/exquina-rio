@@ -141,6 +141,15 @@ section.day.now h2::before{content:""; width:10px; height:10px; border-radius:50
 .ev{display:grid; grid-template-columns:62px minmax(0,1fr) auto; gap:4px 14px; padding-block:14px; border-bottom:1px solid var(--line)}
 .ev.going{background:linear-gradient(90deg, color-mix(in srgb, var(--gelada) 16%, transparent), transparent 70%)}
 .time{font-family:var(--f-display); font-weight:800; font-size:26px; line-height:1; font-variant-numeric:tabular-nums; padding-top:2px}
+.time .un{font-size:14px; font-weight:700; color:var(--muted); margin-left:2px; letter-spacing:.02em}
+.ev.sai .acts{align-items:center}
+.sai-prox{margin:5px 0 0; font-size:14px; color:var(--muted)}
+.sai-prox b{color:var(--ink); font-weight:600}
+.sai-prox .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.08em; font-weight:600; color:var(--azul)}
+.sai-mais{list-style:none; padding:0; margin:0 0 8px; display:grid; gap:3px}
+.sai-mais .when{color:var(--muted)}
+.sai-pedir{margin:16px 0 0}
+.pin-ic{vertical-align:-2px; flex:none}
 .time .ap{font-size:16px; color:var(--muted); margin-right:1px; font-weight:600}
 .main{min-width:0}
 .title{all:unset; cursor:pointer; font-weight:600; font-size:17px; line-height:1.25; display:block; text-wrap:pretty}
@@ -929,7 +938,7 @@ function renderBar(){
   const bar = document.getElementById("bar");
   bar.hidden = (ST.tab==="lugares" || ST.tab==="voce" || ST.tab==="segredo" || ST.tab==="saideras");
   const wr = document.getElementById("whenRow");
-  wr.innerHTML = `<button class="chip near" id="nearBtn" aria-pressed="${ST.near}">${GEO.status==="wait"?"Localizando…":"📍 Perto de mim"}</button><span class="sep"></span>`
+  wr.innerHTML = `<button class="chip near" id="nearBtn" aria-pressed="${ST.near}">${GEO.status==="wait"?"Localizando…":`${PIN} Perto de mim`}</button><span class="sep"></span>`
     + WHEN.map(([k,l])=>`<button class="chip when" data-when="${k}" aria-pressed="${ST.when===k}">${l}</button>`).join("")
     + `<span class="sep"></span><button class="chip free" id="freeBtn" aria-pressed="${ST.free}">Grátis</button>`;
   wr.parentElement.hidden = ST.tab==="mapa";
@@ -1099,21 +1108,64 @@ function viewLugares(){
   return html;
 }
 
-// Saideras: todos os bares perto do usuário numa seção só, com e sem programação.
+// Saideras: todos os bares perto do usuário, com e sem programação, no mesmo visual da agenda.
 // Vai por faixa de distância (até 1 km, 1 a 3 km…); em cada faixa, os com programação primeiro.
-function viewSaideras(){
+const PIN = `<svg class="pin-ic" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="6.5" r="1.8" fill="currentColor"/></svg>`;
+function kmParts(k){
+  if(k<1) return [String(Math.max(50, Math.round(k*1000/50)*50)), "m"];
+  return [k<10 ? k.toFixed(1).replace(".",",") : String(Math.round(k)), "km"];
+}
+function saiRow(v, data){
+  const key = "sai-"+v.id, op = ST.open.has(key), did = "det-"+key;
+  const [num, un] = kmParts(kmTo(v));
+  const prox = isSeg(v) ? [] : data.list.filter(x=>x.v.id===v.id && !S.hidden.has(x.e.id));
+  const nx = prox[0];
+  const cats = [...new Set(isSeg(v) ? [] : (nx ? nx.e.c : (v.cats||[])))].map(k=>`<span class="tagp" style="--cc:var(${CATS[k].c})"><span class="dot"></span>${CATS[k].n}</span>`).join("");
+  const tags = (v.bq?`<span class="tagp bq">botequim</span>`:"")
+    + (nx && nx.e.f ? `<span class="tagp free">Grátis</span>` : "")
+    + cats
+    + (isSeg(v) ? `<span class="tagp chk">sem programação</span>` : (!nx && v.var ? `<span class="tagp chk">dias variam</span>` : ""));
+  const quando = nx ? `<p class="sai-prox"><span class="lbl">${nx.state==="now"?"Rolando agora":"Próxima"}</span> <b>${nx.state==="now"?"":dayLabel(nx.day)+", "}${nx.e.ap?"≈":""}${hhmm(nx.start)}</b> · ${esc(nx.e.t)}</p>` : "";
+  const mais = prox.slice(1,4).map(x=>`<li><b>${x.state==="now"?"Agora":dayLabel(x.day)}, ${x.e.ap?"≈":""}${hhmm(x.start)}</b> · ${esc(x.e.t)} <span class="when">· ${esc(x.e.p)}</span></li>`).join("");
+  const texto = isSeg(v) ? v.x : (v.var || (nx && nx.e.x) || "");
+  const ig = v.ig ? `<a href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${esc(v.ig)}</a>` : "";
+  const full = v.a+", "+v.b.split(" · ")[0]+", Rio de Janeiro";
+  return `<article class="ev sai ${op?"open":""}" data-key="${key}">
+    <div class="time">${num}<span class="un">${un}</span></div>
+    <div class="main">
+      <button class="title" data-open="${key}" aria-expanded="${op}" aria-controls="${did}">${esc(v.n)}</button>
+      <button class="venue" data-open="${key}" aria-expanded="${op}" aria-controls="${did}">${tipo(v)} · ${esc(v.b)} <span class="chev" aria-hidden="true">▾</span><span class="sr">mostrar endereço</span></button>
+      ${quando}
+      <div class="meta">${tags}</div>
+    </div>
+    <div class="acts">${cervaCurta(v)}<a class="act" href="${mapsUrl(v)}" target="_blank" rel="noopener">Como chegar</a></div>
+    <div class="det" id="${did}" ${op?"":"hidden"}>
+      ${fotoHtml(v)}
+      <div class="addr">
+        <div class="addr-txt"><span class="lbl">Endereço</span><strong>${esc(v.a)}</strong><span>${esc(v.b)}, Rio de Janeiro</span></div>
+        <div class="addr-btns"><a class="act" href="${mapsUrl(v)}" target="_blank" rel="noopener">Abrir no mapa</a><button class="act" data-copy="${esc(full)}">Copiar</button></div>
+      </div>
+      ${texto?`<p>${esc(texto)}</p>`:""}
+      ${mais?`<p><b>Depois</b></p><ul class="sai-mais">${mais}</ul>`:""}
+      ${cervaHtml(v)}
+      ${ig?`<div class="links">${ig}</div>`:""}
+    </div>
+  </article>`;
+}
+function viewSaideras(data){
   if(!GEO.pos){
-    const pedir = GEO.status==="wait" ? "" : `<p><button class="act" id="saiGeo">📍 Usar minha localização</button></p>`;
+    const pedir = GEO.status==="wait" ? "" : `<p class="sai-pedir"><button class="act" id="saiGeo">${PIN} Usar minha localização</button></p>`;
     return `<p class="note"><b>Saideras</b> são os bares perto de você, com e sem roda, para decidir onde tomar a próxima.</p>${pedir}${GEO.status==="idle" ? `<div class="note nearbox">Ou escolha seu bairro:${bairroPicker()}</div>` : nearNote()}`;
   }
   const pool = V.concat(SEG);
   const ds = pool.map(kmTo).sort((a,b)=>a-b);
   const raio = Math.max(3, ds[Math.min(11, ds.length-1)]);
-  const vs = nearGroups(pool.filter(v=>kmTo(v)<=raio)).flatMap(g=>g[2]);
+  const groups = nearGroups(pool.filter(v=>kmTo(v)<=raio));
+  const total = groups.reduce((t,g)=>t+g[2].length, 0);
   const onde = GEO.src==="bairro" ? `perto de ${esc(GEO.label)} (centro do bairro)` : "perto de você";
   const trocar = GEO.src==="bairro" ? ` <button class="linkbtn" id="geoRetry">Usar minha localização</button>` : "";
-  return `<p class="note"><b>${vs.length} bares ${onde}</b>, até ${fmtKm(raio)}. Mais perto primeiro e, em cada faixa de distância, os com programação no topo. Distância em linha reta, com posições aproximadas.${trocar}</p>
-    <div class="reg"><h2>Saideras<span class="c">${vs.length}</span></h2>${vs.map(v=>placeHtml(v, true)).join("")}</div>`;
+  return `<p class="note"><b>${total} bares ${onde}</b>, até ${fmtKm(raio)}. Em cada faixa de distância, os que têm programação vêm no topo. Distância em linha reta, com posições aproximadas.${trocar}</p>`
+    + groups.map(g=>`<section class="day"><h2>${g[1]}<span class="c">${g[2].length}</span></h2>${g[2].map(v=>saiRow(v, data)).join("")}</section>`).join("");
 }
 
 function viewSegredo(){
@@ -1223,7 +1275,7 @@ function viewMapa(data){
     <div class="maptools">
       <button class="chip sm" data-zoom="perto" aria-pressed="${ST.mapZoom==="perto"}">Centro e Zona Sul</button>
       <button class="chip sm" data-zoom="cidade" aria-pressed="${ST.mapZoom==="cidade"}">Cidade toda</button>
-      <button class="chip sm" data-zoom="eu" aria-pressed="${ST.mapZoom==="eu" && !!GEO.pos}">${GEO.status==="wait"?"Localizando…":"📍 Perto de mim"}</button>
+      <button class="chip sm" data-zoom="eu" aria-pressed="${ST.mapZoom==="eu" && !!GEO.pos}">${GEO.status==="wait"?"Localizando…":`${PIN} Perto de mim`}</button>
       <span class="hint">${vis.length} lugares · posições aproximadas</span>
     </div>
     ${GEO.status==="err"||GEO.status==="wait"||(ST.mapZoom==="eu"&&GEO.src==="bairro") ? nearNote() : ""}
@@ -1289,7 +1341,7 @@ function render(){
   document.getElementById("n-voce").textContent = nv ? nv : "";
   renderBar();
   const view = document.getElementById("view");
-  patchView(view, ST.tab==="agenda" ? viewAgenda(data) : ST.tab==="voce" ? viewVoce(data) : ST.tab==="mapa" ? viewMapa(data) : ST.tab==="segredo" ? viewSegredo() : ST.tab==="saideras" ? viewSaideras() : viewLugares());
+  patchView(view, ST.tab==="agenda" ? viewAgenda(data) : ST.tab==="voce" ? viewVoce(data) : ST.tab==="mapa" ? viewMapa(data) : ST.tab==="segredo" ? viewSegredo() : ST.tab==="saideras" ? viewSaideras(data) : viewLugares());
   fillAds();
   if(ST.tab==="mapa") mountMap();
 }
