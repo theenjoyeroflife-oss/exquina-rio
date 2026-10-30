@@ -364,7 +364,10 @@ const SRC = {
   segRiotur: "https://www.riotur.rio/gastronomia/botecos/",
   segTombados: "https://www.tudogostoso.com.br/noticias/bares-tombados-do-rio-de-janeiro-conheca-o-roteiro-de-botecos-cariocas-a9722.htm",
   segTimeout: "https://www.timeout.com/pt/rio-de-janeiro/restaurantes/os-melhores-bares-do-rio-de-janeiro",
-  segBelmonte: "https://travel.com.br/experiencia/bar-belmonte/"
+  segBelmonte: "https://travel.com.br/experiencia/bar-belmonte/",
+  segMineiro: "https://gb.guiadasemana.com.br/rio-de-janeiro/en/bars/venues/501/bar-do-mineiro",
+  segDavid: "https://riotimesonline.com/brazil-news/rio-entertainment/morro-chapeu-mangueira-bar-wins-best-buteco-in-brazil/",
+  segCentro: "https://diariodorio.com/cinco-bares-mais-tradicionais-do-centro-do-rio/"
 };
 
 const CATS = {
@@ -489,6 +492,12 @@ const SEG = [
    x:"A unidade da orla de Ipanema, com chope e pastel de frente para o mar. Abre todo dia até 2h."},
  {id:"belleb", n:"Belmonte Leblon", b:"Leblon", r:"sul", t:"bar", bq:1, a:"Rua Dias Ferreira, 521", lat:-22.9838, lng:-43.2262, src:"segBelmonte",
    x:"Boteco de balcão cheio na Dias Ferreira, bom para o chope do fim de tarde. Abre todo dia até 2h."},
+ {id:"mane", n:"Mané", b:"Flamengo", r:"sul", t:"bar", bq:1, a:"Praia do Flamengo, 180", lat:-22.9318, lng:-43.1752, src:"segRiotur",
+   x:"Boteco animado de frente para o Aterro, de uma rede com umas dez casas pelo Rio."},
+ {id:"cervantes", n:"Cervantes", b:"Copacabana", r:"sul", t:"bar", bq:1, a:"Av. Prado Júnior, 335", lat:-22.9630, lng:-43.1745, src:"segTombados",
+   x:"Sanduíche de pernil com abacaxi e chope até de madrugada, um clássico do fim de noite em Copacabana."},
+ {id:"david", n:"Bar do David", b:"Leme · Chapéu Mangueira", r:"sul", t:"bar", bq:1, a:"Ladeira Ary Barroso, 66", lat:-22.9612, lng:-43.1678, src:"segDavid",
+   x:"Boteco no alto do Chapéu Mangueira, premiado no Comida di Buteco, com bolinhos e feijoada de frutos do mar."},
  {id:"cardosao", n:"Armazém Cardosão", b:"Laranjeiras", r:"sul", t:"bar", bq:1, a:"Rua Cardoso Júnior, 312", lat:-22.9365, lng:-43.1905, src:"segTombados",
    x:"Mercearia e bar de bairro, cheio no fim de semana por causa da feijoada."},
  // Centro e Lapa
@@ -504,6 +513,18 @@ const SEG = [
    x:"Armazém e bar de 1906, famoso pelas omeletes e sanduíches no almoço. Só abre em dias úteis."},
  {id:"saothiago", n:"Armazém São Thiago (Bar do Gomes)", b:"Santa Teresa", r:"centro", t:"bar", bq:1, a:"Rua Áurea, 26", lat:-22.9200, lng:-43.1880, src:"segTombados",
    x:"Bar de 1919 que mantém as prateleiras de armazém, com petiscos clássicos de boteco."},
+ {id:"mineiro", n:"Bar do Mineiro", b:"Santa Teresa", r:"centro", t:"bar", bq:1, a:"Rua Paschoal Carlos Magno, 99", lat:-22.9188, lng:-43.1872, src:"segMineiro",
+   x:"Boteco mineiro no Largo dos Guimarães, famoso pelo pastel de feijão e pela feijoada."},
+ {id:"joia", n:"Botequim do Joia", b:"Centro", r:"centro", t:"bar", bq:1, a:"Rua Júlia Lopes de Almeida, 26", lat:-22.9072, lng:-43.1852, src:"segTombados",
+   x:"Negócio de família com mais de cem anos, que enche no almoço por causa da feijoada."},
+ {id:"cachaca", n:"Casa da Cachaça", b:"Lapa", r:"centro", t:"bar", bq:1, a:"Av. Mem de Sá, 110", lat:-22.9134, lng:-43.1803, src:"segTombados",
+   x:"Primeira cachaçaria da cidade, aberta em 1960, com balcão estreito e batidas na Mem de Sá."},
+ {id:"juca", n:"Boteko do Juca", b:"Lapa", r:"centro", t:"bar", bq:1, a:"Av. Mem de Sá, 95", lat:-22.9130, lng:-43.1809, src:"segRiotur",
+   x:"Boteco descontraído na Lapa, com feijoada aos sábados."},
+ {id:"bafo", n:"Bafo da Prainha", b:"Saúde", r:"centro", t:"bar", bq:1, a:"Largo de São Francisco da Prainha", lat:-22.8976, lng:-43.1812, src:"segTimeout",
+   x:"Mesas no largo, cerveja de casco e churrasquinho perto do Morro da Conceição. Às vezes tem roda de samba."},
+ {id:"r28", n:"Restaurante 28", b:"Centro", r:"centro", t:"bar", bq:1, a:"Rua Barão de São Félix, 28", lat:-22.9012, lng:-43.1912, src:"segCentro",
+   x:"Casa de 1910 que foi ponto dos estivadores, com cozido, rabada e bacalhau."},
  // Zona Norte
  {id:"frente", n:"Bar da Frente", b:"Praça da Bandeira", r:"norte", t:"bar", bq:1, a:"Rua Barão de Iguatemi, 388", lat:-22.9115, lng:-43.2163, src:"segRiotur",
    x:"Boteco tradicional da Barão de Iguatemi, conhecido pelo croquete de carne e pelo fondue de coxinha."},
@@ -519,6 +540,14 @@ const SEG = [
    x:"Mais de 15 petiscos, com destaque para o joelho de porco à pururuca."},
  {id:"adonis", n:"Velho Adonis", b:"Benfica", r:"norte", t:"bar", bq:1, a:"Rua São Luiz Gonzaga, 2156", lat:-22.8925, lng:-43.2370, src:"segRiotur",
    x:"Boteco de 1952 com chope cremoso e bolinho de bacalhau à portuguesa."},
+ {id:"madrid", n:"Bar Madrid", b:"Tijuca", r:"norte", t:"bar", bq:1, a:"Rua Almirante Gavião, 11", lat:-22.9238, lng:-43.2328, src:"segRiotur",
+   x:"Bar de filhos de imigrantes espanhóis, com petiscos de bar e, de vez em quando, conversas sobre história do Rio."},
+ {id:"salete", n:"Salete", b:"Tijuca", r:"norte", t:"bar", bq:1, a:"Rua Afonso Pena, 189", lat:-22.9196, lng:-43.2213, src:"segTombados",
+   x:"Ponto de encontro em dia de jogo no Maracanã, famoso pelas empadas."},
+ {id:"costelas", n:"Costelas", b:"Praça da Bandeira", r:"norte", t:"bar", bq:1, a:"Rua Barão de Iguatemi, 408", lat:-22.9117, lng:-43.2168, src:"segRiotur",
+   x:"Começou numa garagem e virou parada certa para costela de porco na Barão de Iguatemi."},
+ {id:"noo", n:"Noo Cachaçaria", b:"Praça da Bandeira", r:"norte", t:"bar", a:"Rua Barão de Iguatemi, 358", lat:-22.9113, lng:-43.2158, src:"segRiotur",
+   x:"Cachaçaria tranquila com petiscos quase todos vegetarianos; aceita pet."},
  {id:"cachambeer", n:"Cachambeer", b:"Cachambi", r:"norte", t:"bar", bq:1, a:"Rua Cachambi, 475", lat:-22.8890, lng:-43.2780, src:"segRiotur",
    x:"Costela no bafo e chope muito gelado."}
 ];
