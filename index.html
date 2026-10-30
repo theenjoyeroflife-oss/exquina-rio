@@ -302,9 +302,8 @@ footer p{margin:0 0 8px; max-width:68ch}
     <nav class="tabs" role="tablist" aria-label="Seções">
       <button role="tab" id="t-saideras" data-tab="saideras" aria-selected="true">Saideras</button>
       <button role="tab" id="t-agenda" data-tab="agenda" aria-selected="false">Agenda</button>
-      <button role="tab" id="t-voce" data-tab="voce" aria-selected="false">Pra você<span class="n" id="n-voce"></span></button>
-      <button role="tab" id="t-lugares" data-tab="lugares" aria-selected="false">Lugares</button>
       <button role="tab" id="t-mapa" data-tab="mapa" aria-selected="false">Mapa</button>
+      <button role="tab" id="t-voce" data-tab="voce" aria-selected="false">Pra você<span class="n" id="n-voce"></span></button>
       <button role="tab" id="t-segredo" data-tab="segredo" aria-selected="false">Né segredo</button>
     </nav>
   </header>
@@ -823,7 +822,7 @@ function rotaUrl(v){ return "https://www.google.com/maps/dir/?api=1&destination=
 
 // ---------- state ----------
 const ST = { segOrd:"az", tab:"saideras", when:"prox", free:false, near:false, cat:null, reg:null, open:new Set(), mapZoom:"perto", mapSel:null };
-try{ const t = load("tab"); if(t && ["saideras","agenda","voce","mapa","lugares","segredo"].includes(t)) ST.tab = t; }catch(e){}
+try{ let t = load("tab"); if(t==="lugares") t = "segredo"; if(t && ["saideras","agenda","voce","mapa","segredo"].includes(t)) ST.tab = t; }catch(e){}
 const WHEN = [["prox","Em breve"],["agora","Agora"],["hoje","Hoje"],["amanha","Amanhã"],["fds","Fim de semana"],["7d","7 dias"]];
 
 // ---------- perto de mim ----------
@@ -940,7 +939,7 @@ function nearNote(){
   const longe = V.every(v=>kmTo(v)>40);
   const onde = GEO.src==="bairro" ? `perto de ${esc(GEO.label)} (centro do bairro)` : "perto de você";
   const trocar = GEO.src==="bairro" ? ` <button class="linkbtn" id="geoRetry">Usar minha localização</button>` : "";
-  return `<div class="note nearbox"><b>Mostrando ${onde}:</b> ${ST.tab==="agenda" ? `lugares até ${fmtKm(GEO.radius)}, do mais perto ao mais longe em cada dia. <button class="linkbtn" data-tab="lugares">Ver todos os bares perto, inclusive os sem evento</button>.` : ST.tab==="lugares" ? `todos os bares por faixa de distância. Em cada faixa, os com programação vêm no topo e depois os sem, do mais perto ao mais longe.` : `do mais perto ao mais longe.`} Distância em linha reta, com posições aproximadas.${longe?" Você parece estar longe do Rio, então tudo aparece bem distante.":""}${trocar}</div>`;
+  return `<div class="note nearbox"><b>Mostrando ${onde}:</b> ${ST.tab==="agenda" ? `lugares até ${fmtKm(GEO.radius)}, do mais perto ao mais longe em cada dia. <button class="linkbtn" data-tab="saideras">Ver todos os bares perto, inclusive os sem evento</button>.` : `do mais perto ao mais longe.`} Distância em linha reta, com posições aproximadas.${longe?" Você parece estar longe do Rio, então tudo aparece bem distante.":""}${trocar}</div>`;
 }
 
 function passWhen(x){
@@ -967,7 +966,7 @@ function passFilters(x, ignoreHidden){
 // ---------- render: bar ----------
 function renderBar(){
   const bar = document.getElementById("bar");
-  bar.hidden = (ST.tab==="lugares" || ST.tab==="voce" || ST.tab==="segredo" || ST.tab==="saideras");
+  bar.hidden = (ST.tab==="voce" || ST.tab==="segredo" || ST.tab==="saideras");
   const wr = document.getElementById("whenRow");
   wr.innerHTML = `<button class="chip near" id="nearBtn" aria-pressed="${ST.near}">${GEO.status==="wait"?"Localizando…":`${PIN} Perto de mim`}</button><span class="sep"></span>`
     + WHEN.map(([k,l])=>`<button class="chip when" data-when="${k}" aria-pressed="${ST.when===k}">${l}</button>`).join("")
@@ -1087,30 +1086,6 @@ function viewVoce(data){
 
 // Lugar com programação: tem evento fixo, data avulsa ou programação variável (só os de V).
 const temEvento = v => !isSeg(v);
-function placeHtml(v, byDist){
-  const km = byDist ? `<b class="km">${fmtKm(kmTo(v))}</b> · ` : "";
-  if(isSeg(v)){
-    const ig = v.ig ? `<a href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${esc(v.ig)}</a>` : "";
-    const src = srcUrl(v.src);
-    return `<div class="place" id="p-${v.id}"><h3>${esc(v.n)}</h3>
-        <div class="sub">${km}${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
-        <ul>${byDist?`<li><span class="when"><b>Sem programação</b> · do Né segredo</span></li>`:""}${v.x?`<li><span class="when">${esc(v.x)}</span></li>`:""}${cervaHtml(v,"li")}</ul>
-        <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Google Maps</a>${ig}${src?`<a href="${src}" target="_blank" rel="noopener">Fonte</a>`:""}</div></div>`;
-  }
-  const evs = E.filter(e=>e.v===v.id);
-  const today = buildDays().days[0].iso;
-  const dts = D.filter(e=>e.v===v.id && e.dt>=today).sort((a,b)=>a.dt.localeCompare(b.dt));
-  const items = evs.map(e=>`<li><span><b>${esc(e.t)}</b> <span class="when">· ${esc(sched(e))}, ${e.ap?"≈":""}${e.h} · ${esc(e.p)}</span></span></li>`).join("");
-  const ditems = dts.map(e=>`<li><span><b>${esc(e.t)}</b> <span class="when">· ${esc(sched(e).replace(" (data avulsa)",""))}${e.tbd?"":", "+(e.ap?"≈":"")+e.h} · ${esc(e.p)}</span></span></li>`).join("");
-  const varTxt = v.var ? `<li><span class="when">${esc(v.var)}</span></li>` : "";
-  const srcKey = v.src || (evs[0] && evs[0].s) || "";
-  const src = srcUrl(srcKey);
-  const ig = v.ig ? `<a href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${esc(v.ig)}</a>` : "";
-  return `<div class="place" id="p-${v.id}"><h3>${esc(v.n)}</h3>
-        <div class="sub">${km}${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
-        <ul>${items}${varTxt}${cervaHtml(v,"li")}${ditems?`<li><span class="when"><b>Próximas datas anunciadas</b></span></li>`+ditems:""}</ul>
-        <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Google Maps</a>${ig}${src && !src.includes("instagram.com")?`<a href="${src}" target="_blank" rel="noopener">Fonte</a>`:""}</div></div>`;
-}
 // Com localização: todos os bares (com e sem programação) em faixas de distância; dentro de cada faixa,
 // os com programação vêm no topo e cada grupo segue do mais perto ao mais longe.
 const FAIXAS = [[1,"Até 1 km"],[3,"De 1 a 3 km"],[10,"De 3 a 10 km"],[Infinity,"Mais longe"]];
@@ -1122,23 +1097,6 @@ function nearGroups(pool){
     ini = fim;
     return ["f"+fim, rot, vs];
   }).filter(g=>g[2].length);
-}
-function nearLink(){
-  const on = ST.near && GEO.pos;
-  return `<button class="linkbtn" id="nearBtn">${on?"Voltar para a lista por região":GEO.status==="wait"?"Localizando…":"Ordenar pelo mais perto de mim"}</button>`;
-}
-function viewLugares(){
-  const byDist = ST.near && GEO.pos;
-  let html = `<p class="note">${byDist ? `${V.length+SEG.length} bares e lugares, incluindo os do Né segredo. Posições aproximadas.` : `${V.length} lugares. Endereços e dias vêm das fontes linkadas; posições no mapa são aproximadas.`}
-    ${nearLink()}</p>`;
-  html += (GEO.status==="err" || byDist ? nearNote() : "");
-  const groups = byDist
-    ? nearGroups(V.concat(SEG))
-    : Object.entries(REGS).map(([rk,rl])=>[rk, rl, V.filter(v=>v.r===rk).sort((a,b)=>bqOrd(a)-bqOrd(b) || a.n.localeCompare(b.n,"pt"))]);
-  for(const [rk, rl, vs] of groups){
-    html += `<div class="reg"><h2>${rl}<span class="c">${vs.length}</span></h2>${vs.map(v=>placeHtml(v, byDist)).join("")}</div>`;
-  }
-  return html;
 }
 
 // Saideras: todos os bares perto do usuário, com e sem programação, no mesmo visual da agenda.
@@ -1333,7 +1291,7 @@ function viewMapa(data){
     const items = next.map(x=>`<li><span><b>${x.state==="now"?"Agora":dayLabel(x.day)}, ${x.e.ap?"≈":""}${hhmm(x.start)}</b> · ${esc(x.e.t)} <span class="when">· ${esc(x.e.p)}</span></span></li>`).join("");
     card = `<div class="place"><h3>${esc(v.n)}</h3><div class="sub">${tipo(v)} · ${esc(v.b)} · ${esc(v.a)}</div>
       <ul>${items || (v.var||v.x?`<li><span class="when">${esc(v.var||v.x)}</span></li>`:`<li><span class="when">Nada nas próximas duas semanas com esses filtros.</span></li>`)}${cervaHtml(v,"li")}</ul>
-      <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Abrir no Google Maps</a><button class="linkbtn" data-goto="${v.id}">Ver em ${isSeg(v)?"Né segredo":"Lugares"}</button></div></div>`;
+      <div class="links"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">Abrir no Google Maps</a><button class="linkbtn" data-goto="${v.id}">Ver em Né segredo</button></div></div>`;
   }
   return `<div class="mapwrap">
     <div class="maptools">
@@ -1405,7 +1363,7 @@ function render(){
   document.getElementById("n-voce").textContent = nv ? nv : "";
   renderBar();
   const view = document.getElementById("view");
-  patchView(view, ST.tab==="agenda" ? viewAgenda(data) : ST.tab==="voce" ? viewVoce(data) : ST.tab==="mapa" ? viewMapa(data) : ST.tab==="segredo" ? viewSegredo() : ST.tab==="saideras" ? viewSaideras(data) : viewLugares());
+  patchView(view, ST.tab==="agenda" ? viewAgenda(data) : ST.tab==="voce" ? viewVoce(data) : ST.tab==="mapa" ? viewMapa(data) : ST.tab==="segredo" ? viewSegredo() : viewSaideras(data));
   fillAds();
   if(ST.tab==="mapa") mountMap();
 }
@@ -1454,7 +1412,7 @@ document.addEventListener("click", ev=>{
   if(d.unhide){ if(d.unhide==="all") S.hidden.clear(); else S.hidden.delete(d.unhide); persist(); render(); return; }
   if(d.zoom==="eu"){ const go = ()=>{ ST.mapZoom = "eu"; M.zoomKey = null; }; if(GEO.pos){ go(); render(); } else if(GEO.status!=="wait") askGeo(go); return; }
   if(d.zoom){ ST.mapZoom = d.zoom; M.zoomKey = null; render(); return; }
-  if(d.goto){ ST.tab = isSeg(VBY[d.goto]) ? "segredo" : "lugares"; render(); const el = document.getElementById("p-"+d.goto); if(el) el.scrollIntoView({block:"start"}); return; }
+  if(d.goto){ ST.tab = "segredo"; ST.segOrd = "az"; render(); const el = document.getElementById("p-"+d.goto); if(el) el.scrollIntoView({block:"start"}); return; }
   if(d.pin){ ST.mapSel = ST.mapSel===d.pin ? null : d.pin; render(); return; }
 });
 document.addEventListener("change", ev=>{
