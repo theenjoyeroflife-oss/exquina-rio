@@ -25,6 +25,7 @@ Agenda de rodas de samba, choro, jazz, bossa, forró, pagode e karaokê em bares
 
 - `V`: lugares, no formato `{id, n, b (bairro), r: centro|sul|norte|oeste, t: bar|rua|praca|clube|quadra|feira|quintal|laje, a (endereço), lat, lng, ig?}`.
   - Casas sem dia fixo levam `var:"…"`, `cats:[…]` e `src:"chave"` em vez de eventos.
+- `SEG`: bares e botecos sem programação, mostrados só na aba "Né segredo" e no mapa (pontos cinza, somem com filtro de estilo ou grátis). Mesmo formato de `V`, com `x` (uma ou duas frases) e sem eventos.
 - `E`: programação fixa, no formato `{id, v (id do lugar), t, c:[cats], d:[0=dom…6=sáb], n?:[semanas do mês], h:"HH:MM", ap?:1 (horário aproximado), p (preço), f?:1 (grátis), ck?:1 ("necessário confirmar"), dur (horas), skip?:["AAAA-MM-DD"], s, x}`.
 - `D`: datas avulsas do Instagram, no formato `{id:"d-<lugar>-<MMDD>", dt:"AAAA-MM-DD", …, rep?:[ids de E substituídos], tbd?:1}`.
 - `FOTOS`: foto de cada lugar no dropdown, no formato `{<id do lugar>: {src (imagem ~640px), pag (página da foto), cred (crédito)}}`. Use só fotos de licença livre (Wikimedia Commons) ou enviadas/autorizadas pelo Lucas, nunca do Instagram ou do Google. Se a imagem falhar, o bloco some sozinho. Este ambiente não abre o Commons, então as fotos de lá entram sem conferência e o Lucas precisa olhar.
