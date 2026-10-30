@@ -788,7 +788,10 @@ function cervaCurta(v){
   const faixa = lo===hi ? (v.cv.p.includes("a partir")?"R$ "+lo+"+":"R$ "+lo) : "R$ "+lo+"–"+hi;
   return `<span class="cvchip" title="Preço médio da cerveja${v.cv.est?" (estimativa)":""}"><span class="emo" aria-hidden="true">🍺</span>${v.cv.est?"≈":""}${faixa}</span>`;
 }
-function mapsUrl(v){ return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(v.a+", "+v.b.split(" · ")[0]+", Rio de Janeiro"); }
+// Nome + endereço: assim o Google Maps acha o lugar certo em vez de só a rua (as coordenadas são aproximadas).
+function mapsQuery(v){ return v.n.split(" · ")[0]+", "+v.a+", "+v.b.split(" · ")[0]+", Rio de Janeiro"; }
+function mapsUrl(v){ return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(mapsQuery(v)); }
+function rotaUrl(v){ return "https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(mapsQuery(v)); }
 
 // ---------- state ----------
 const ST = { tab:"saideras", when:"prox", free:false, near:false, cat:null, reg:null, open:new Set(), mapZoom:"perto", mapSel:null };
@@ -1138,7 +1141,7 @@ function saiRow(v, data){
       ${quando}
       <div class="meta">${tags}</div>
     </div>
-    <div class="acts">${cervaCurta(v)}<a class="act" href="${mapsUrl(v)}" target="_blank" rel="noopener">Como chegar</a></div>
+    <div class="acts">${cervaCurta(v)}<a class="act" href="${rotaUrl(v)}" target="_blank" rel="noopener">Como chegar</a></div>
     <div class="det" id="${did}" ${op?"":"hidden"}>
       ${fotoHtml(v)}
       <div class="addr">
