@@ -18,6 +18,7 @@ Agenda de rodas de samba, choro, jazz, bossa, forró, pagode e karaokê em bares
   - Eventos em `E` aceitam `de`/`ate` (AAAA-MM-DD) para limitar o período, usado nas exposições (que aparecem só nos fins de semana para não lotar a agenda).
   - A maior parte da programação está em `D` (datas únicas), com fonte no Tá Sendo (tags funk e eletrônica), Songkick, sites de ingresso e imprensa. Sem horário conferido, use `tbd:1` ("a def." = horário a confirmar no ingresso).
   - Os dois sites têm um link para o outro no cabeçalho (`.irmao`). O AdSense usa os mesmos blocos.
+  - **Sempre que atualizar a agenda do Exquina Rio, atualize também a do Exquina Show** (pedido do Lucas em 04/11/2026): tire as datas passadas de `D`, busque eventos dos próximos ~17 dias (Tá Sendo nas tags funk e eletrônica, Songkick, Festas RJ, CCBB, imprensa) e atualize "Datas conferidas em DD/MM" na nota e no rodapé.
 
 ## Fluxo de trabalho
 
@@ -69,6 +70,11 @@ Agenda de rodas de samba, choro, jazz, bossa, forró, pagode e karaokê em bares
 - Nunca copie a chave para mensagens, commits, docs ou este arquivo.
 - Não edite nem reescreva o bloco `M.tiles = L.tileLayer(…)`: commits que tocam essas linhas são bloqueados pela verificação de segurança. Se precisar mudar algo ali, passe ao Lucas o trecho exato com `SUA_CHAVE` no lugar da chave.
 - Sobrou uma linha inofensiva, `subdomains:"abcd",`, logo abaixo. O Lucas ficou de apagá-la.
+
+## Atualização diária (tarefa agendada "Atualizar Exquina Rio")
+
+- Roda todo dia às 8h53. Lê o Instagram das casas pelo navegador do app, atualiza `D` e `E` no `index.html`, depois atualiza o `show/index.html`, valida, faz commit e push na `main`.
+- Edita os arquivos no lugar. Nunca regenera o `index.html` a partir do artifact.
 
 ## Rotina diária (tarefa agendada)
 
