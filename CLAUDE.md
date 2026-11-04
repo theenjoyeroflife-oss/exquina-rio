@@ -14,6 +14,7 @@ Agenda de rodas de samba, choro, jazz, bossa, forró, pagode e karaokê em bares
 - **Exquina Show:** `show/index.html`, publicado em https://exquinario.com/show/. Site irmão para bailes funk e charme, shows, festas eletrônicas e feiras/exposições, criado em 04/11/2026 a partir de uma cópia do `index.html`.
   - É um arquivo independente: mudanças no `index.html` não passam para ele sozinhas.
   - Tema noturno (rosa como cor de destaque), sem as abas Saideras e Né segredo, sem preço de cerveja. Abas: Agenda, Mapa, Pra você.
+  - Foto de fundo em `show/fundo.jpg` (vista do Pão de Açúcar ao entardecer, enviada pelo Lucas em 04/11/2026), com as cores puxadas para roxo e rosa. Diferente do site principal, ela é um arquivo à parte, sem base64 no CSS.
   - Categorias em `CATS`: funk, charme, show, eletronica, festa, cultura. Tipos de lugar em `TIPO`: casa, arena, clube, boate, praca, rua, quadra, centro, lounge, jardim, teatro.
   - Eventos em `E` aceitam `de`/`ate` (AAAA-MM-DD) para limitar o período, usado nas exposições (que aparecem só nos fins de semana para não lotar a agenda).
   - A maior parte da programação está em `D` (datas únicas), com fonte no Tá Sendo (tags funk e eletrônica), Songkick, sites de ingresso e imprensa. Sem horário conferido, use `tbd:1` ("a def." = horário a confirmar no ingresso).
