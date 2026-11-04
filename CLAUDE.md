@@ -19,6 +19,7 @@ Agenda de rodas de samba, choro, jazz, bossa, forró, pagode e karaokê em bares
   - Eventos em `E` aceitam `de`/`ate` (AAAA-MM-DD) para limitar o período, usado nas exposições (que aparecem só nos fins de semana para não lotar a agenda).
   - A maior parte da programação está em `D` (datas únicas), com fonte no Tá Sendo (tags funk e eletrônica), Songkick, sites de ingresso e imprensa. Sem horário conferido, use `tbd:1` ("a def." = horário a confirmar no ingresso).
   - Os dois sites têm um link para o outro no cabeçalho (`.irmao`). O AdSense usa os mesmos blocos.
+  - No site principal, clicar no "exquina" grande (`#paraShow`) faz "show" entrar em rosa e um círculo noturno cobrir a tela antes de abrir `show/` (script no fim do `index.html`). O Show recebe a chegada com um fade (classe `chegou`, marcada por `sessionStorage.exqPortal`). Com "reduzir movimento" ligado, vai direto.
   - **Sempre que atualizar a agenda do Exquina Rio, atualize também a do Exquina Show** (pedido do Lucas em 04/11/2026): tire as datas passadas de `D`, busque eventos dos próximos ~17 dias (Tá Sendo nas tags funk e eletrônica, Songkick, Festas RJ, CCBB, imprensa) e atualize "Datas conferidas em DD/MM" na nota e no rodapé.
 
 ## Fluxo de trabalho
