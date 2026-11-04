@@ -21,6 +21,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8397005000172113" crossorigin="anonymous"></script>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0;font:14px system-ui,sans-serif} img{max-width:100%} [hidden]{display:none!important}</style>
 <title>Exquina Rio</title>
+<script>try{ if(sessionStorage.getItem("exqVolta")){ sessionStorage.removeItem("exqVolta"); document.documentElement.classList.add("chegou"); } }catch(e){}</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -84,6 +85,12 @@ header.top > div:first-child{padding-right:86px}
 .wordmark .vem{display:inline-block; vertical-align:bottom; max-width:0; overflow:hidden; white-space:nowrap; opacity:0; color:#ff6fb5;
   transition:max-width .45s cubic-bezier(.3,.7,.2,1), opacity .3s}
 .indo .wordmark .vem{max-width:3.4em; opacity:1}
+/* Chegada pelo clique no "exquina" do Exquina Show */
+.chegou .wrap{animation:chegar .6s ease-out both}
+.chegou .fundo{animation:chegarFundo 1.2s ease-out both}
+@keyframes chegar{from{opacity:0; transform:translateY(10px)}}
+@keyframes chegarFundo{from{opacity:0}}
+@media (prefers-reduced-motion: reduce){ .chegou .wrap, .chegou .fundo{animation:none} }
 .portal{position:fixed; z-index:60; pointer-events:none; width:0; height:0; border-radius:50%; transform:translate(-50%,-50%);
   background:#0b0912; box-shadow:0 0 60px 26px rgba(255,111,181,.75), 0 0 140px 70px rgba(150,60,170,.45)}
 .wordmark{font-family:var(--f-display); font-weight:800; font-size:clamp(44px, 9vw, 64px); line-height:.85; letter-spacing:.01em; margin:0; text-transform:lowercase}
