@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 05/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 06/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -442,7 +442,9 @@ const SRC = {
   tsDedge1121: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-3-anos-2026-11-21",
   tsArvrao1121: "https://tasendo.com.br/rio-de-janeiro/festas/baile-funk-no-mirante-do-arvrao-2026-11-21",
   tsJockey1122: "https://tasendo.com.br/rio-de-janeiro/festas/alive-legacy-rio-de-janeiro-22-11-2026",
-  tsDawn: "https://tasendo.com.br/rio-de-janeiro/festas/dawn-patrol"
+  tsDawn: "https://tasendo.com.br/rio-de-janeiro/festas/dawn-patrol",
+  tsArvrao1121b: "https://tasendo.com.br/rio-de-janeiro/festas/bom-gosto-farias-no-mirante-do-arvrao",
+  tsEstnet1121: "https://tasendo.com.br/rio-de-janeiro/festas/me-chama-de-pop-2026-11-21"
 };
 
 const CATS = {
@@ -489,7 +491,8 @@ const V = [
  {id:"experience", n:"Experience Music", b:"Lapa", r:"centro", t:"casa", a:"Rua Riachuelo, 20", lat:-22.9133, lng:-43.1795},
  {id:"amanha", n:"Museu do Amanhã", b:"Saúde", r:"centro", t:"centro", a:"Praça Mauá, 1", lat:-22.8940, lng:-43.1797},
  {id:"jockey", n:"Brava Arena Jockey", b:"Gávea", r:"sul", t:"arena", a:"Praça Santos Dumont, 31", lat:-22.9752, lng:-43.2245},
- {id:"itanhanga", n:"Ilha Itanhangá", b:"Barra da Tijuca", r:"oeste", t:"jardim", a:"Estrada da Barra da Tijuca, 793", lat:-23.0000, lng:-43.3010}
+ {id:"itanhanga", n:"Ilha Itanhangá", b:"Barra da Tijuca", r:"oeste", t:"jardim", a:"Estrada da Barra da Tijuca, 793", lat:-23.0000, lng:-43.3010},
+ {id:"estnet", n:"Estação NET Rio", b:"Botafogo", r:"sul", t:"casa", a:"Rua Voluntários da Pátria, 35", lat:-22.9510, lng:-43.1840}
 ];
 
 const SEG = [];
@@ -504,11 +507,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas em 04/11/2026 e 05/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas em 04, 05 e 06/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-pink-1105", dt:"2026-11-05", v:"pink", t:"Quinta Pink", c:["funk"], h:"20:00", p:"Grátis", f:1, ck:1, dur:5, s:"tsPink", x:"Festa de rua de quinta em Campo Grande, listada na tag funk do Tá Sendo."},
- {id:"d-uana-1105", dt:"2026-11-05", v:"rival", t:"Uana", c:["show"], h:"20:00", tbd:1, p:"Ingresso", ck:1, dur:3, s:"skUana", x:"Show no palco do Teatro Rival, na Cinelândia."},
- {id:"d-ocean-1105", dt:"2026-11-05", v:"circo", t:"Ocean Alley", c:["show"], h:"21:00", tbd:1, p:"Ingresso (Sympla)", dur:4, s:"bbOcean", x:"A banda australiana de rock psicodélico e reggae no Circo Voador, um dos três shows da turnê no Brasil."},
  {id:"d-piq-1106", dt:"2026-11-06", v:"caza", t:"Piquezin: uma noite de funk", c:["funk"], h:"21:00", p:"A partir de R$ 40", dur:7, s:"tsPiq", x:"Noite de funk na Caza Lagoa, com vista para a Lagoa. Vai até as 4h."},
  {id:"d-tz-1106", dt:"2026-11-06", v:"tz", t:"TZ da Coronel: Sexta Vibe", c:["funk"], h:"21:00", p:"A partir de R$ 30", ck:1, dur:5, s:"tsTZ", x:"Sexta de baile em Padre Miguel, listada na tag funk do Tá Sendo."},
  {id:"d-dedge-1106", dt:"2026-11-06", v:"dedge", t:"D-Edge Rio 3 anos com Beltran", c:["eletronica"], h:"23:00", p:"A partir de R$ 110", dur:6, s:"tsDedge6", x:"Abertura do mês de aniversário do clube, com o DJ e produtor Beltran."},
@@ -541,9 +541,11 @@ const D = [
  {id:"d-graus-1120", dt:"2026-11-20", v:"graus", t:"Eclipse com MC GP e Landim", c:["funk"], h:"22:00", p:"R$ 23,99", dur:5, s:"tsGraus1120", x:"Noite de funk paulista e trap, com show do MC GP."},
  {id:"d-dedge-1120", dt:"2026-11-20", v:"dedge", t:"D-Edge Rio 3 anos: Red Night", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:5, s:"tsDedge1120", x:"A festa Red Night comanda mais uma noite do mês de aniversário do clube."},
  {id:"d-arvrao-1120", dt:"2026-11-20", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1120", x:"Véspera de feriado no alto do Vidigal."},
+ {id:"d-arvrao-1121b", dt:"2026-11-21", v:"arvrao", t:"Bom Gosto e Farias", c:["show"], h:"16:00", p:"R$ 33", dur:5, s:"tsArvrao1121b", x:"Pagode raiz no alto do Vidigal."},
  {id:"d-experience-1121", dt:"2026-11-21", v:"experience", t:"MC Taya, Majis e Midorii Kido", c:["show", "funk"], h:"20:00", p:"R$ 49,50", dur:5, s:"tsExperience1121", x:"Shows na Lapa; abertura da casa às 20h. 18+."},
  {id:"d-amanha-1121", dt:"2026-11-21", v:"amanha", t:"Baile do Momo", c:["festa"], h:"23:00", p:"Ingresso (open bar)", ck:1, dur:5, s:"tsAmanha1121", x:"Baile com open bar no Museu do Amanhã."},
  {id:"d-dedge-1121", dt:"2026-11-21", v:"dedge", t:"D-Edge Rio 3 anos: D.Cassete & Rewind", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:5, s:"tsDedge1121", x:"Noite do selo D.Cassete & Rewind no mês de aniversário do clube."},
+ {id:"d-estnet-1121", dt:"2026-11-21", v:"estnet", t:"Me Chama de Pop: especial Adéla, Charli XCX e Slayyyter", c:["festa"], h:"23:00", p:"R$ 28,99", dur:5, s:"tsEstnet1121", x:"Festa de pop com edição dedicada às três cantoras."},
  {id:"d-arvrao-1121", dt:"2026-11-21", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1121", x:"Baile de sábado no alto do Vidigal."},
  {id:"d-jockey-1122", dt:"2026-11-22", v:"jockey", t:"Alive Legacy: The Pyramid Returns", c:["eletronica"], h:"18:00", p:"A partir de R$ 80", dur:5, s:"tsJockey1122", x:"A experiência audiovisual da pirâmide volta ao Rio 20 anos depois."}
 ];
@@ -905,7 +907,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 05/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 06/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
