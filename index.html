@@ -345,7 +345,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 06/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
+    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 07/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
     <p>Rodas de rua cancelam com chuva, mudam de dia e às vezes acabam. Antes de sair, veja o perfil da roda ou da casa. Fontes: Mapa das Rodas de Samba 2025 (Prefeitura do Rio), Riotur, Time Out Rio, Catraca Livre, Diário do Rio, Sopa Cultural, O Globo e outras, linkadas em cada evento.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -504,7 +504,29 @@ const SRC = {
   tsBeco1123: "https://tasendo.com.br/rio-de-janeiro/festas/arlindinho-das-antigas-2026-11-23",
   tsScenarium1112: "https://tasendo.com.br/rio-de-janeiro/festas/enzo-belmonte-no-rio-scenarium-12-11",
   tsScenarium1118: "https://tasendo.com.br/rio-de-janeiro/festas/flavia-saolli-no-rio-scenarium-18-11",
-  tsMocamba1108: "https://tasendo.com.br/rio-de-janeiro/festas/forro-da-eliza-mocamba-livre-08-11"
+  tsMocamba1108: "https://tasendo.com.br/rio-de-janeiro/festas/forro-da-eliza-mocamba-livre-08-11",
+  tsBeco1107: "https://tasendo.com.br/rio-de-janeiro/festas/lucas-de-moraes",
+  tsClementina1107: "https://tasendo.com.br/rio-de-janeiro/festas/sabado-no-quintal-2026-11-07",
+  tsBeco1107b: "https://tasendo.com.br/rio-de-janeiro/festas/grupo-arruda-no-beco-do-rato-2026-11-07",
+  tsScenarium1107b: "https://tasendo.com.br/rio-de-janeiro/festas/luana-vaz-no-rio-scenarium-07-11",
+  tsRenas1109: "https://tasendo.com.br/rio-de-janeiro/festas/moacyr-luz-e-samba-do-trabalhador-09-de-novembro",
+  tsBeco1111: "https://tasendo.com.br/rio-de-janeiro/festas/samba-do-xoxo-e-convidados-beco-do-rato-11-11-20h-quarta-feira",
+  tsBeco1112: "https://tasendo.com.br/rio-de-janeiro/festas/encontros-casuais-12-11",
+  tsTerraco1113: "https://tasendo.com.br/rio-de-janeiro/festas/nosso-pagode-no-terraco-da-vila-2026-11-13",
+  tsTerraco1114: "https://tasendo.com.br/rio-de-janeiro/festas/bernini-no-terraco-da-vila-2026-11-14",
+  tsClementina1114: "https://tasendo.com.br/rio-de-janeiro/festas/samba-da-tt-2026-11-14",
+  tsBeco1114: "https://tasendo.com.br/rio-de-janeiro/festas/marquinho-sathan-2026-11-14",
+  tsScenarium1114b: "https://tasendo.com.br/rio-de-janeiro/festas/marcelle-motta-no-rio-scenarium-14-11",
+  tsBeco1115: "https://tasendo.com.br/rio-de-janeiro/festas/favelou",
+  tsTerraco1115: "https://tasendo.com.br/rio-de-janeiro/festas/samba-de-santo-antonio-no-terraco-da-vila-2026-11-15",
+  tsBatuq1115: "https://tasendo.com.br/rio-de-janeiro/festas/liomar-cosminho-na-batuq",
+  tsBeco1119: "https://tasendo.com.br/rio-de-janeiro/festas/encontros-casuais-19-11",
+  tsClementina1120: "https://tasendo.com.br/rio-de-janeiro/festas/consciencia-negra-cacique-de-ramos-i-xoxo-i-dowglas-diniz-i-feriado-20-11-16h-quintal-da-clementina",
+  tsBatuq1120: "https://tasendo.com.br/rio-de-janeiro/festas/samba-da-volta-projeto-roza-na-batuq",
+  tsBatuq1121: "https://tasendo.com.br/rio-de-janeiro/festas/renan-oliveira-bruna-oliveira-rony-oliveira-na-batuq",
+  tsRenas1122: "https://tasendo.com.br/rio-de-janeiro/festas/pagode-do-coruja-suel-2026-11-22",
+  tsBatuq1122: "https://tasendo.com.br/rio-de-janeiro/festas/saideiras-casuais-marcelle-motta-marina-iris-quilombo-de-iraja-na-batuq",
+  tsEssencia1122: "https://tasendo.com.br/rio-de-janeiro/festas/roda-de-samba-do-vinny-santa-fe-22-11-essencia-do-samba"
 };
 
 const CATS = {
@@ -784,36 +806,36 @@ const E = [
  {id:"nevadakara", v:"nevada", t:"Karaokê do Nevada", c:["karaoke"], d:[3,4,5,6,0], h:"19:00", p:"Consulte", ck:1, dur:7, s:"nevada", x:"Conhecido como o maior karaokê da Tijuca, com sinuca e cerveja gelada, de quarta a domingo até as 2h."}
 ];
 
-// Datas avulsas conferidas no Tá Sendo em 06/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
+// Datas avulsas conferidas no Tá Sendo em 07/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
 const D = [
- {id:"d-alfa-1106", dt:"2026-11-06", v:"alfa", t:"Sambalana com Alana Moraes", c:["samba"], h:"18:00", p:"Consulte", dur:4, s:"tsAlfa1106", x:"Roda no Boulevard Olímpico; segundo a cantora, acontece faça chuva ou faça sol."},
- {id:"d-mocamba-1106", dt:"2026-11-06", v:"mocamba", t:"Samba da Constituição canta Djavan", c:["samba"], h:"18:00", p:"Consulte", dur:4, s:"tsMocamba1106", x:"Ingressos limitados."},
- {id:"d-arcos-1106", dt:"2026-11-06", v:"arcos", t:"Lapa do Meu Samba", c:["samba", "pagode"], h:"19:00", p:"Grátis", f:1, dur:4, s:"tsArcos1106", x:"Roda semanal e gratuita embaixo dos Arcos."},
- {id:"d-lsf-1106", dt:"2026-11-06", v:"lsf", t:"Ponta de Lança, do Samba de Ponta", c:["samba"], h:"19:00", p:"Grátis", f:1, dur:4, s:"tsLsf1106", x:"Projeto de rua do Samba de Ponta, ocupando o largo no Centro."},
- {id:"d-gema-1106", dt:"2026-11-06", v:"gema", t:"Enzo Belmonte", c:["samba"], h:"19:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1106", x:"Programação da casa no Tá Sendo."},
- {id:"d-demo-1106", dt:"2026-11-06", v:"demo", t:"Forró do Demo com Trio Rapacuia", c:["forro"], h:"20:00", p:"R$ 25", dur:4, s:"tsDemo1106", x:"Toda sexta, com aulão no início da noite."},
- {id:"d-essencia-1106", dt:"2026-11-06", v:"essencia", t:"Quintal do Alvinho: PC Macabu convida Caju pra Baixo", c:["samba", "pagode"], h:"20:00", p:"R$ 23,99", dur:4, s:"tsEssencia1106", x:"Projeto Encontros do Quintal do Alvinho no Cachambi."},
- {id:"d-scenarium-1106", dt:"2026-11-06", v:"scenarium", t:"Aninha Portal", c:["samba"], h:"20:00", tbd:1, p:"Consulte", dur:4, s:"tsScenarium1106", x:"Noite de música ao vivo no casarão da Lavradio."},
  {id:"d-portela-1107", dt:"2026-11-07", v:"portela", t:"Feijoada da Família Portelense", c:["samba", "feijoada"], h:"12:00", ap:1, p:"R$ 30", dur:4, s:"tsPortela1107", x:"Roda de samba-enredo com intérpretes das escolas do Grupo Especial, na quadra de Oswaldo Cruz."},
  {id:"d-scenarium-1107", dt:"2026-11-07", v:"scenarium", t:"Samba & Feijoada com Nando do Cavaco", c:["samba", "feijoada"], h:"12:00", p:"R$ 75", rep:["scenfeij"], dur:4, s:"tsScenarium1107", x:"Casa abre às 12h, com feijoada e opções veganas."},
+ {id:"d-beco-1107", dt:"2026-11-07", v:"beco", t:"Lucas de Moraes", c:["samba", "feijoada"], h:"14:00", p:"R$ 28,99", rep:["becosab"], dur:4, s:"tsBeco1107", x:"O cantor comanda a roda de sábado à tarde; almoço servido a partir das 12h."},
  {id:"d-terraco-1107", dt:"2026-11-07", v:"terraco", t:"Samba do Xoxó", c:["samba"], h:"15:00", p:"Grátis até 18h", f:1, dur:4, s:"tsTerraco1107", x:"Das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
  {id:"d-batuq-1107", dt:"2026-11-07", v:"batuq", t:"Samba de Caboclo", c:["samba"], h:"16:00", p:"R$ 27,50", dur:4, s:"tsBatuq1107", x:"Tarde de samba na Casinha Amarela da Penha. Área kids grátis."},
+ {id:"d-clementina-1107", dt:"2026-11-07", v:"clementina", t:"Toninho Geraes", c:["samba"], h:"16:00", p:"Consulte", dur:6, s:"tsClementina1107", x:"O compositor de sucessos gravados por grandes intérpretes canta no Quintal."},
+ {id:"d-beco-1107b", dt:"2026-11-07", v:"beco", t:"Grupo Arruda", c:["samba"], h:"18:00", p:"R$ 38,99", rep:["becosabnoite"], dur:5, s:"tsBeco1107b", x:"Roda do Grupo Arruda com abertura do cantor Diogo Cunha."},
  {id:"d-pulgas-1107", dt:"2026-11-07", v:"pulgas", t:"Samba dos Guimarães com Grupo Firmamento", c:["samba", "forro"], h:"19:30", p:"R$ 18,99", dur:4, s:"tsPulgas1107", x:"Roda de sábado em Santa Teresa, com trio de forró e DJ Álvaro nos intervalos."},
  {id:"d-pedra-1107", dt:"2026-11-07", v:"pedra", t:"Samba da Constituição na Pedra do Sal", c:["samba"], h:"20:00", p:"Grátis", f:1, ck:1, rep:["pedrafds"], dur:4, s:"tsPedra1107", x:"A roda da Constituição leva samba de raiz ao largo da Pequena África."},
+ {id:"d-scenarium-1107b", dt:"2026-11-07", v:"scenarium", t:"Luana Vaz", c:["samba"], h:"20:00", p:"R$ 30", dur:4, s:"tsScenarium1107b", x:"Noite de música ao vivo no casarão da Lavradio."},
  {id:"d-gema-1107", dt:"2026-11-07", v:"gema", t:"Família Moadir", c:["samba"], h:"20:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1107", x:"Programação da casa no Tá Sendo."},
  {id:"d-mocamba-1108", dt:"2026-11-08", v:"mocamba", t:"Forró da Eliza", c:["forro"], h:"12:00", p:"R$ 10", dur:10, s:"tsMocamba1108", x:"O forró LGBT do Rio, com abertura às 12h e show a partir das 17h, até 22h."},
  {id:"d-renas-1108", dt:"2026-11-08", v:"renas", t:"Essa Foi Délcio Que Fez!", c:["samba", "pagode"], h:"15:00", p:"R$ 23,99", dur:4, s:"tsRenas1108", x:"Délcio Luiz canta os sucessos de pagode e samba que compôs."},
  {id:"d-terraco-1108", dt:"2026-11-08", v:"terraco", t:"Pique Novo", c:["pagode"], h:"15:00", p:"Grátis até 18h", f:1, dur:4, s:"tsTerraco1108", x:"Das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
  {id:"d-batuq-1108", dt:"2026-11-08", v:"batuq", t:"Arlindinho", c:["samba"], h:"16:00", p:"R$ 27,50", dur:4, s:"tsBatuq1108", x:"Domingo de samba com o filho de Arlindo Cruz. Área kids grátis."},
  {id:"d-essencia-1108", dt:"2026-11-08", v:"essencia", t:"Estreia do Quintal do BatuqG", c:["samba", "pagode"], h:"16:00", p:"Consulte", dur:4, s:"tsEssencia1108", x:"Novo projeto de samba e pagode da casa, aos domingos."},
+ {id:"d-renas-1109", dt:"2026-11-09", v:"renas", t:"Samba do Trabalhador com Moacyr Luz", c:["samba"], h:"16:30", p:"R$ 38,99", rep:["trab"], dur:5, s:"tsRenas1109", x:"A roda de toda segunda, em local coberto: com chuva, o samba acontece."},
  {id:"d-beco-1109", dt:"2026-11-09", v:"beco", t:"Arlindinho das Antigas", c:["samba"], h:"18:00", p:"R$ 35 a 39", rep:["arlindinho"], dur:4, s:"tsBeco1109", x:"A roda fixa das segundas, com abertura da Banda Bom Aprendiz."},
  {id:"d-batuq-1110", dt:"2026-11-10", v:"batuq", t:"Gravação do audiovisual de Dinho Luz", c:["pagode"], h:"17:00", p:"R$ 27,50", dur:4, s:"tsBatuq1110", x:"Terça de pagode com convidados como Renan Oliveira e Clareou."},
  {id:"d-gema-1110", dt:"2026-11-10", v:"gema", t:"Fernando Jovem e Samba Trombonado", c:["samba"], h:"19:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1110", x:"Programação da casa no Tá Sendo."},
  {id:"d-barlapa-1111", dt:"2026-11-11", v:"barlapa", t:"Revelação convida Délcio Luiz", c:["pagode"], h:"18:00", p:"R$ 66", dur:4, s:"tsBarlapa1111", x:"Roda de abertura às 19h; atração principal por volta da meia-noite."},
  {id:"d-scenarium-1111", dt:"2026-11-11", v:"scenarium", t:"Grupo Arruda", c:["samba"], h:"19:00", p:"Consulte", dur:4, s:"tsScenarium1111", x:"O grupo comanda o palco em três sets de cerca de uma hora."},
+ {id:"d-beco-1111", dt:"2026-11-11", v:"beco", t:"Samba do Xoxó e convidados", c:["samba"], h:"21:00", p:"A partir de R$ 25", rep:["becoqua"], dur:4, s:"tsBeco1111", x:"Casa abre às 18h; o samba começa às 21h."},
  {id:"d-barlapa-1112", dt:"2026-11-12", v:"barlapa", t:"Fundo de Quintal", c:["samba", "pagode"], h:"18:00", p:"R$ 33", dur:4, s:"tsBarlapa1112", x:"Roda de abertura às 19h; atração principal por volta da meia-noite."},
  {id:"d-scenarium-1112", dt:"2026-11-12", v:"scenarium", t:"Enzo Belmonte", c:["samba"], h:"19:00", p:"Consulte", dur:4, s:"tsScenarium1112", x:"Três sets de cerca de uma hora no casarão da Lavradio."},
+ {id:"d-beco-1112", dt:"2026-11-12", v:"beco", t:"Encontros Casuais com Inácio Rios e Mosquito", c:["samba"], h:"21:00", p:"R$ 33,99", rep:["casuais"], dur:4, s:"tsBeco1112", x:"Casa abre às 18h; roda às 21h, com a DJ Cris Panttoja nos intervalos."},
  {id:"d-gema-1112", dt:"2026-11-12", v:"gema", t:"Andrezão do Cacique", c:["samba", "pagode"], h:"21:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1112", x:"Programação da casa no Tá Sendo."},
+ {id:"d-terraco-1113", dt:"2026-11-13", v:"terraco", t:"Nosso Pagode", c:["pagode"], h:"17:00", p:"Grátis até 19h", f:1, dur:5, s:"tsTerraco1113", x:"Das 17h às 22h. Entrada grátis até 19h com retirada de ingresso; depois, couvert."},
  {id:"d-barlapa-1113", dt:"2026-11-13", v:"barlapa", t:"Arlindinho", c:["samba"], h:"18:00", p:"R$ 44", dur:4, s:"tsBarlapa1113", x:"Roda de abertura às 19h; atração principal por volta da meia-noite."},
  {id:"d-mocamba-1113", dt:"2026-11-13", v:"mocamba", t:"Samba do Xoxó", c:["samba"], h:"18:00", p:"Consulte", dur:4, s:"tsMocamba1113", x:"Ingressos limitados."},
  {id:"d-arcos-1113", dt:"2026-11-13", v:"arcos", t:"Lapa do Meu Samba", c:["samba", "pagode"], h:"19:00", p:"Grátis", f:1, dur:4, s:"tsArcos1113", x:"Roda semanal e gratuita embaixo dos Arcos."},
@@ -821,9 +843,16 @@ const D = [
  {id:"d-scenarium-1113", dt:"2026-11-13", v:"scenarium", t:"Clara Costa", c:["samba"], h:"20:00", tbd:1, p:"Consulte", dur:4, s:"tsScenarium1113", x:"Noite de música ao vivo no casarão da Lavradio."},
  {id:"d-scenarium-1114", dt:"2026-11-14", v:"scenarium", t:"Samba & Feijoada especial com Marquinho Sathan", c:["samba", "feijoada"], h:"12:00", p:"R$ 75", rep:["scenfeij"], dur:4, s:"tsScenarium1114", x:"Edição do mês de aniversário da casa. Abertura às 12h."},
  {id:"d-renas-1114", dt:"2026-11-14", v:"renas", t:"Samba EnRENA: as que bombaram no Spotify 2026", c:["samba"], h:"15:00", p:"Grátis", f:1, ck:1, dur:4, s:"tsRenas1114", x:"Estreia do projeto de samba-enredo do clube, com os sambas mais ouvidos de 2026."},
+ {id:"d-terraco-1114", dt:"2026-11-14", v:"terraco", t:"Bernini", c:["samba", "pagode"], h:"15:00", p:"Grátis até 18h", f:1, dur:7, s:"tsTerraco1114", x:"Das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
  {id:"d-batuq-1114", dt:"2026-11-14", v:"batuq", t:"Amanda Amado convida Marvvila", c:["pagode", "samba"], h:"16:00", p:"R$ 27,50", dur:4, s:"tsBatuq1114", x:"Pagode e MPB na Casinha Amarela. Área kids grátis."},
+ {id:"d-clementina-1114", dt:"2026-11-14", v:"clementina", t:"Samba da Tetê com Teresa Cristina", c:["samba"], h:"16:00", p:"R$ 38,99", dur:6, s:"tsClementina1114", x:"Teresa Cristina volta ao Quintal da Clementina."},
+ {id:"d-beco-1114", dt:"2026-11-14", v:"beco", t:"Favelou e Marquinho Sathan", c:["samba"], h:"19:00", p:"R$ 38,99", rep:["becosabnoite"], dur:6, s:"tsBeco1114", x:"O grupo Favelou abre às 19h; Marquinho Sathan assume a roda às 22h40."},
  {id:"d-pulgas-1114", dt:"2026-11-14", v:"pulgas", t:"Samba dos Guimarães com Samba da Constituição", c:["samba"], h:"19:30", p:"R$ 18,99", dur:4, s:"tsPulgas1114", x:"Roda de sábado no Largo dos Guimarães."},
+ {id:"d-scenarium-1114b", dt:"2026-11-14", v:"scenarium", t:"Marcelle Motta", c:["samba"], h:"20:00", p:"Consulte", dur:4, s:"tsScenarium1114b", x:"Noite de música ao vivo no casarão da Lavradio."},
  {id:"d-gema-1114", dt:"2026-11-14", v:"gema", t:"JP Silva", c:["samba"], h:"20:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1114", x:"Programação da casa no Tá Sendo."},
+ {id:"d-terraco-1115", dt:"2026-11-15", v:"terraco", t:"Samba de Santo Antônio", c:["samba"], h:"15:00", p:"Grátis até 18h", f:1, dur:7, s:"tsTerraco1115", x:"Das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
+ {id:"d-beco-1115", dt:"2026-11-15", v:"beco", t:"Favelou", c:["samba", "feijoada"], h:"16:00", p:"R$ 23,99", rep:["becodom"], dur:5, s:"tsBeco1115", x:"Domingo de samba com almoço especial a partir das 12h."},
+ {id:"d-batuq-1115", dt:"2026-11-15", v:"batuq", t:"Liomar e Cosminho", c:["samba", "pagode"], h:"16:00", p:"R$ 27,50", dur:5, s:"tsBatuq1115", x:"Domingo de samba e pagode na Casinha Amarela da Penha."},
  {id:"d-beco-1116", dt:"2026-11-16", v:"beco", t:"Arlindinho das Antigas", c:["samba"], h:"18:00", p:"R$ 35 a 39", rep:["arlindinho"], dur:4, s:"tsBeco1116", x:"A roda fixa das segundas do Beco."},
  {id:"d-barlapa-1118", dt:"2026-11-18", v:"barlapa", t:"Revelação", c:["pagode"], h:"18:00", p:"R$ 66", dur:4, s:"tsBarlapa1118", x:"Roda de abertura às 19h; atração principal por volta da meia-noite."},
  {id:"d-scenarium-1118", dt:"2026-11-18", v:"scenarium", t:"Flavia Saolli", c:["samba"], h:"19:00", p:"Consulte", dur:4, s:"tsScenarium1118", x:"Três sets de cerca de uma hora no casarão da Lavradio."},
@@ -832,13 +861,20 @@ const D = [
  {id:"d-essencia-1119", dt:"2026-11-19", v:"essencia", t:"Samba do Xoxó: gravação do audiovisual", c:["samba", "pagode"], h:"19:00", p:"Consulte", dur:4, s:"tsEssencia1119", x:"Véspera de feriado, com gravação do audiovisual do grupo."},
  {id:"d-gema-1119", dt:"2026-11-19", v:"gema", t:"Andrezão do Cacique", c:["samba", "pagode"], h:"19:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1119", x:"Véspera do feriado da Consciência Negra."},
  {id:"d-scenarium-1119", dt:"2026-11-19", v:"scenarium", t:"Yago Costa convida Viny Santa Fé", c:["samba", "pagode"], h:"20:00", tbd:1, p:"Consulte", dur:4, s:"tsScenarium1119", x:"Véspera do feriado da Consciência Negra."},
+ {id:"d-beco-1119", dt:"2026-11-19", v:"beco", t:"Encontros Casuais com Inácio Rios e Mosquito", c:["samba"], h:"21:00", p:"R$ 38,99", rep:["casuais"], dur:4, s:"tsBeco1119", x:"Véspera de feriado. Casa abre às 18h; roda às 21h."},
  {id:"d-renas-1120", dt:"2026-11-20", v:"renas", t:"Tributo ao Reinaldo: o povo canta o Rei", c:["samba", "pagode"], h:"13:00", p:"R$ 23,99", dur:6, s:"tsRenas1120", x:"Celebração do Dia da Consciência Negra no clube do Andaraí."},
  {id:"d-terraco-1120", dt:"2026-11-20", v:"terraco", t:"Quintal da Magia e Bota Dendê", c:["samba", "pagode"], h:"15:00", p:"Grátis até 18h", f:1, dur:7, s:"tsTerraco1120", x:"Feriado das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
+ {id:"d-clementina-1120", dt:"2026-11-20", v:"clementina", t:"Consciência Negra: Cacique de Ramos, Samba do Xoxó e Dowglas Diniz", c:["samba"], h:"16:00", p:"R$ 33,99", dur:7, s:"tsClementina1120", x:"Feriado com a roda do Cacique, o Força da Cor, o intérprete da Mangueira e o Xoxó."},
+ {id:"d-batuq-1120", dt:"2026-11-20", v:"batuq", t:"Samba da Volta e Projeto Roza", c:["samba"], h:"16:00", p:"R$ 27,50", dur:5, s:"tsBatuq1120", x:"Feriado da Consciência Negra na Casinha Amarela."},
  {id:"d-arcos-1120", dt:"2026-11-20", v:"arcos", t:"Lapa do Meu Samba", c:["samba", "pagode"], h:"19:00", p:"Grátis", f:1, dur:4, s:"tsArcos1120", x:"Véspera de feriado, embaixo dos Arcos."},
  {id:"d-clementina-1121", dt:"2026-11-21", v:"clementina", t:"Casuarina 25 anos", c:["samba"], h:"16:00", p:"R$ 28,99", dur:4, s:"tsClementina1121", x:"O grupo abre a temporada de 25 anos com convidados; Samba D'Boa a partir das 18h."},
+ {id:"d-batuq-1121", dt:"2026-11-21", v:"batuq", t:"Renan Oliveira, Bruna Oliveira e Rony Oliveira", c:["pagode", "samba"], h:"16:00", p:"R$ 27,50", dur:5, s:"tsBatuq1121", x:"Sábado de feriadão na Casinha Amarela da Penha."},
  {id:"d-pulgas-1121", dt:"2026-11-21", v:"pulgas", t:"Samba dos Guimarães com Pé de Samba e Nanda Monteiro", c:["samba"], h:"19:30", p:"R$ 18,99", dur:4, s:"tsPulgas1121", x:"Roda de sábado no Largo dos Guimarães."},
  {id:"d-gema-1121", dt:"2026-11-21", v:"gema", t:"Leonardo Bessa", c:["samba"], h:"20:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1121", x:"Programação da casa no Tá Sendo."},
  {id:"d-demo-1121", dt:"2026-11-21", v:"demo", t:"Baile do Forró no Rio com Trio Potiguá", c:["forro"], h:"21:00", p:"R$ 25", dur:4, s:"tsDemo1121", x:"O trio potiguar de pé-de-serra comemora 25 anos com a formação original."},
+ {id:"d-renas-1122", dt:"2026-11-22", v:"renas", t:"Pagode do Coruja com Suel", c:["pagode"], h:"15:00", p:"R$ 28,99", dur:6, s:"tsRenas1122", x:"Segunda edição do projeto do compositor Suel, depois de uma estreia lotada."},
+ {id:"d-batuq-1122", dt:"2026-11-22", v:"batuq", t:"Saideiras Casuais, Marcelle Motta, Marina Iris e Quilombo de Irajá", c:["samba", "pagode"], h:"16:00", p:"R$ 27,50", dur:5, s:"tsBatuq1122", x:"Encontro de rodas na Casinha Amarela da Penha."},
+ {id:"d-essencia-1122", dt:"2026-11-22", v:"essencia", t:"Roda de Samba do Vinny Santa Fé", c:["samba"], h:"16:00", p:"Consulte", dur:5, s:"tsEssencia1122", x:"Domingo de samba no Cachambi, com futebol ao vivo no telão."},
  {id:"d-beco-1123", dt:"2026-11-23", v:"beco", t:"Arlindinho das Antigas", c:["samba"], h:"18:00", p:"R$ 35 a 39", rep:["arlindinho"], dur:4, s:"tsBeco1123", x:"A roda fixa das segundas, com abertura da Banda Bom Aprendiz."}
 ];
 const ALL = E.concat(D);
@@ -1196,7 +1232,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 06/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
+  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 07/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
   const msg = ST.when==="agora" ? "Nenhuma roda no ar agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");

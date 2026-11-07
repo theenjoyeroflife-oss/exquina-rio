@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 06/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 07/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -444,7 +444,15 @@ const SRC = {
   tsJockey1122: "https://tasendo.com.br/rio-de-janeiro/festas/alive-legacy-rio-de-janeiro-22-11-2026",
   tsDawn: "https://tasendo.com.br/rio-de-janeiro/festas/dawn-patrol",
   tsArvrao1121b: "https://tasendo.com.br/rio-de-janeiro/festas/bom-gosto-farias-no-mirante-do-arvrao",
-  tsEstnet1121: "https://tasendo.com.br/rio-de-janeiro/festas/me-chama-de-pop-2026-11-21"
+  tsEstnet1121: "https://tasendo.com.br/rio-de-janeiro/festas/me-chama-de-pop-2026-11-21",
+  tsArvrao1107: "https://tasendo.com.br/rio-de-janeiro/festas/marquinhos-sensacao-tentasamba-no-mirante-do-arvrao",
+  tsAgyto1107: "https://tasendo.com.br/rio-de-janeiro/festas/agyto-solta-a-beats-pink-lemonade-ate-1h-open-bar",
+  tsPortalrio1107: "https://tasendo.com.br/rio-de-janeiro/festas/07-11-portal-modo-funk-mega-open-bar-duas-pistas-tequila-free-a-note-toda",
+  tsCasacarnaval1113: "https://tasendo.com.br/rio-de-janeiro/festas/baile-charme-essencia-black",
+  tsArvrao1114b: "https://tasendo.com.br/rio-de-janeiro/festas/caju-pra-baixo-pagode-do-adame-renan-oliveira-no-mirante-do-arvrao",
+  tsSesctijuca1117: "https://tasendo.com.br/rio-de-janeiro/festas/songoro-cosongo-20-anos",
+  tsDedge1119: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-3-anos-2026-11-19",
+  tsArvrao1120b: "https://tasendo.com.br/rio-de-janeiro/festas/swing-simpatia-pique-novo-gustavo-lins-no-mirante-do-arvrao"
 };
 
 const CATS = {
@@ -492,7 +500,10 @@ const V = [
  {id:"amanha", n:"Museu do Amanhã", b:"Saúde", r:"centro", t:"centro", a:"Praça Mauá, 1", lat:-22.8940, lng:-43.1797},
  {id:"jockey", n:"Brava Arena Jockey", b:"Gávea", r:"sul", t:"arena", a:"Praça Santos Dumont, 31", lat:-22.9752, lng:-43.2245},
  {id:"itanhanga", n:"Ilha Itanhangá", b:"Barra da Tijuca", r:"oeste", t:"jardim", a:"Estrada da Barra da Tijuca, 793", lat:-23.0000, lng:-43.3010},
- {id:"estnet", n:"Estação NET Rio", b:"Botafogo", r:"sul", t:"casa", a:"Rua Voluntários da Pátria, 35", lat:-22.9510, lng:-43.1840}
+ {id:"estnet", n:"Estação NET Rio", b:"Botafogo", r:"sul", t:"casa", a:"Rua Voluntários da Pátria, 35", lat:-22.9510, lng:-43.1840},
+ {id:"casacarnaval", n:"Casa Carnaval", b:"Centro", r:"centro", t:"casa", a:"Rua do Mercado, 37", lat:-22.9015, lng:-43.1752},
+ {id:"portalrio", n:"Portal Rio", b:"Lapa", r:"centro", t:"boate", a:"Rua do Lavradio, 163", lat:-22.9108, lng:-43.1828},
+ {id:"sesctijuca", n:"Sesc Tijuca", b:"Tijuca", r:"norte", t:"centro", a:"Rua Barão de Mesquita, 539", lat:-22.9265, lng:-43.2380}
 ];
 
 const SEG = [];
@@ -507,27 +518,29 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas em 04, 05 e 06/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 07/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-piq-1106", dt:"2026-11-06", v:"caza", t:"Piquezin: uma noite de funk", c:["funk"], h:"21:00", p:"A partir de R$ 40", dur:7, s:"tsPiq", x:"Noite de funk na Caza Lagoa, com vista para a Lagoa. Vai até as 4h."},
- {id:"d-tz-1106", dt:"2026-11-06", v:"tz", t:"TZ da Coronel: Sexta Vibe", c:["funk"], h:"21:00", p:"A partir de R$ 30", ck:1, dur:5, s:"tsTZ", x:"Sexta de baile em Padre Miguel, listada na tag funk do Tá Sendo."},
- {id:"d-dedge-1106", dt:"2026-11-06", v:"dedge", t:"D-Edge Rio 3 anos com Beltran", c:["eletronica"], h:"23:00", p:"A partir de R$ 110", dur:6, s:"tsDedge6", x:"Abertura do mês de aniversário do clube, com o DJ e produtor Beltran."},
  {id:"d-lins-1107", dt:"2026-11-07", v:"lins", t:"2º Pago Funk da Antiga da Família 232", c:["funk"], h:"14:00", p:"R$ 24 com feijoada e bebida", dur:10, s:"tsLins", x:"Tarde e noite de funk das antigas, charme e pagode na quadra da Lins Imperial. O ingresso inclui feijoada e uma bebida."},
  {id:"d-blackbom-1107", dt:"2026-11-07", v:"maua", t:"Baile Black Bom na Praça Mauá", c:["charme"], h:"16:00", p:"Grátis", f:1, dur:8, s:"tsBlackBom", x:"Edição que revisita o Movimento Black Rio, com DJ Flash, aulão de charme para iniciantes, a banda Consciência Tranquila e feira de empreendedores negros."},
+ {id:"d-arvrao-1107", dt:"2026-11-07", v:"arvrao", t:"Marquinhos Sensação e TentaSamba", c:["show"], h:"16:00", p:"R$ 33", dur:5, s:"tsArvrao1107", x:"Show de pagode no alto do Vidigal."},
  {id:"d-rita-1107", dt:"2026-11-07", v:"circo", t:"Rita Benneditto: Tecnomacumba", c:["show","eletronica"], h:"20:00", p:"R$ 70 a 200", dur:9, s:"tsRita", x:"O show que mistura cantos de matriz africana, MPB e eletrônica, com abertura do Africanoise e DJ Gustavo Keno nos intervalos. Portões às 20h; 18+."},
  {id:"d-lagum-1107", dt:"2026-11-07", v:"qualistage", t:"Lagum", c:["show"], h:"21:00", tbd:1, p:"Ingresso", ck:1, dur:3, s:"skLagum", x:"A banda mineira traz ao Rio a turnê do disco novo."},
  {id:"d-ret-1107", dt:"2026-11-07", v:"farmasi", t:"Filipe Ret: Retianismo", c:["show"], h:"22:00", p:"A partir de R$ 99", dur:6, s:"tsRet", x:"Show único do rapper na arena onde ele gravou o DVD FRXV. Portões às 18h; ingresso solidário com 1 kg de alimento."},
  {id:"d-dedge-1107", dt:"2026-11-07", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:6, s:"tsDedge7", x:"Segunda noite do mês de aniversário do clube."},
+ {id:"d-agyto-1107", dt:"2026-11-07", v:"agyto", t:"Agyto: Pink Lemonade", c:["festa"], h:"23:00", p:"R$ 82,50 (open bar)", dur:6, s:"tsAgyto1107", x:"Festa com uma pista, dois bares e open bar das 23h às 5h."},
+ {id:"d-portalrio-1107", dt:"2026-11-07", v:"portalrio", t:"Portal Modo Funk", c:["funk", "festa"], h:"23:00", p:"A partir de R$ 90 (open bar)", dur:6, s:"tsPortalrio1107", x:"Duas pistas, funk na principal e pop na outra, com open bar."},
  {id:"d-marlboro-1108", dt:"2026-11-08", v:"merck", t:"Tributo ao Baile do BBB com DJ Marlboro", c:["funk"], h:"16:00", p:"A partir de R$ 20", dur:7, s:"tsMarlboro", x:"Domingo de funk com DJ Marlboro, abertura do DJ Napô. Vai até as 23h."},
  {id:"d-comunidades-1108", dt:"2026-11-08", v:"jovelina", t:"Baile Charme das Comunidades vol. 2", c:["charme","funk"], h:"16:00", p:"Contribuição de R$ 10", ck:1, dur:6, s:"tsComunidades", x:"Segunda edição do baile comunitário da Pavuna. O link de ingressos aparece como esgotado; confirme antes de ir."},
  {id:"d-hayley-1109", dt:"2026-11-09", v:"qualistage", t:"Hayley Williams", c:["show"], h:"18:00", p:"R$ 282,50 a 980", dur:5, s:"omHayley", x:"A vocalista do Paramore em turnê solo. A data foi antecipada para segunda, 9/11; 18h é a abertura dos portões."},
  {id:"d-chico-1110", dt:"2026-11-10", v:"ginastico", t:"Chico César", c:["show"], h:"19:00", tbd:1, p:"Ingresso", ck:1, dur:2, s:"skChico", x:"O cantor e compositor paraibano no Teatro Sesc Ginástico."},
  {id:"d-bosque-1112", dt:"2026-11-12", v:"bosque", t:"bsqnt no Bosque", c:["festa"], h:"20:00", p:"R$ 66", ck:1, dur:5, s:"tsBosque1112", x:"Noite com atrações convidadas no bar ao ar livre com vista para o Cristo."},
+ {id:"d-casacarnaval-1113", dt:"2026-11-13", v:"casacarnaval", t:"Baile Charme Essência Black", c:["charme"], h:"17:00", p:"Grátis", f:1, dur:5, s:"tsCasacarnaval1113", x:"Sexta de baile charme com o grupo Essência Black e workshop de dança."},
  {id:"d-semfiltro-1113", dt:"2026-11-13", v:"luizgama", t:"RJ Sem Filtro: samba, pagode e funk", c:["funk","festa"], h:"20:00", p:"Grátis até 22h", f:1, dur:8, s:"tsSemFiltro", x:"Festa que junta samba, pagode e funk no Centro. Entrada grátis até as 22h; depois, a partir de R$ 19."},
  {id:"d-blackcarioca-1113", dt:"2026-11-13", v:"havana", t:"Baile Black Carioca", c:["charme"], h:"21:00", p:"A partir de R$ 24", dur:6, s:"tsBlackCarioca", x:"Soul, funk e música brasileira no estilo dos bailes do subúrbio, com DJ Corello e DJ Doni. Até as 3h."},
  {id:"d-nando-1113", dt:"2026-11-13", v:"qualistage", t:"Nando Reis", c:["show"], h:"21:30", p:"Ingresso", ck:1, dur:3, s:"ggNando", x:"Show do cantor na Qualistage. Horário de agregador de shows; confira no ingresso."},
  {id:"d-afterlife-1113", dt:"2026-11-13", v:"save", t:"Afterlife com MC Carol", c:["funk","festa"], h:"23:00", p:"A partir de R$ 75", dur:6, s:"tsAfterlife", x:"Festa universitária com tema de Halloween e open bar, com show de MC Carol. 18+."},
  {id:"d-dedge-1113", dt:"2026-11-13", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 90", dur:6, s:"tsDedge13", x:"Mais uma noite do mês de aniversário do clube."},
+ {id:"d-arvrao-1114b", dt:"2026-11-14", v:"arvrao", t:"Caju pra Baixo, Pagode do Adame e Renan Oliveira", c:["show"], h:"16:00", p:"R$ 44", dur:6, s:"tsArvrao1114b", x:"Tarde de pagode no alto do Vidigal."},
  {id:"d-itanhanga-1114", dt:"2026-11-14", v:"itanhanga", t:"Modinha! A Festa: 16 anos", c:["festa"], h:"17:00", p:"A partir de R$ 56", dur:5, s:"tsItanhanga1114", x:"Dez horas de festa e três pistas: pagode e axé 90, rock com bandas ao vivo e pop."},
  {id:"d-domin-1114", dt:"2026-11-14", v:"cidartes", t:"Dominguinho: João Gomes, Jota.pê e Mestrinho", c:["show"], h:"18:00", tbd:1, p:"Ingresso", dur:4, s:"skDomin", x:"O trio de forró e piseiro vencedor do Grammy Latino, nos jardins da Cidade das Artes."},
  {id:"d-tiradentes-1114", dt:"2026-11-14", v:"tiradentes", t:"Rave & Bronze: Paco Cabana e Zasou", c:["eletronica", "festa"], h:"21:00", p:"Grátis", f:1, dur:5, s:"tsTiradentes1114", x:"Os residentes da festa tocam b2b a noite toda na praça."},
@@ -535,8 +548,11 @@ const D = [
  {id:"d-agyto-1114", dt:"2026-11-14", v:"agyto", t:"Diego Martins convida Valesca Popozuda", c:["funk", "festa"], h:"23:00", p:"A partir de R$ 77 (open bar)", dur:5, s:"tsAgyto1114", x:"As duas se apresentam juntas pela primeira vez no Rio, em noite com open bar."},
  {id:"d-arvrao-1114", dt:"2026-11-14", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1114", x:"Baile de sábado no alto do Vidigal, madrugada adentro."},
  {id:"d-domin-1115", dt:"2026-11-15", v:"cidartes", t:"Dominguinho: data extra", c:["show"], h:"18:00", tbd:1, p:"Ingresso", ck:1, dur:4, s:"frDomin", x:"Data extra da turnê, no mesmo lugar."},
+ {id:"d-sesctijuca-1117", dt:"2026-11-17", v:"sesctijuca", t:"Songoro Cosongo 20 anos", c:["show"], h:"18:00", p:"R$ 5", dur:2, s:"tsSesctijuca1117", x:"O grupo comemora duas décadas com músicas dos dois discos, que marcaram o carnaval de rua carioca."},
  {id:"d-ca7-1119", dt:"2026-11-19", v:"vivorio", t:"CA7RIEL & Paco Amoroso", c:["show"], h:"21:00", tbd:1, p:"R$ 260 a 840", ck:1, dur:3, s:"tmCa7", x:"A dupla argentina da Free Spirits World Tour. O show do Rio foi antecipado de 20 para 19/11, segundo a Ticketmaster."},
  {id:"d-tz-1119", dt:"2026-11-19", v:"tz", t:"Baile da Cúpula com MC Maneirinho", c:["funk"], h:"21:00", p:"R$ 30", dur:5, s:"tsTz1119", x:"Show do MC no Soho Lounge, em Padre Miguel. 18+."},
+ {id:"d-dedge-1119", dt:"2026-11-19", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:6, s:"tsDedge1119", x:"Mais uma noite do mês de aniversário do clube."},
+ {id:"d-arvrao-1120b", dt:"2026-11-20", v:"arvrao", t:"Swing & Simpatia, Pique Novo e Gustavo Lins", c:["show"], h:"16:00", p:"R$ 33", dur:6, s:"tsArvrao1120b", x:"Feriado de pagode no alto do Vidigal."},
  {id:"d-dawn-1120", dt:"2026-11-20", v:"vivorio", t:"Dawn Patrol Rio de Janeiro", c:["eletronica"], h:"21:00", p:"Ingresso", dur:6, s:"tsDawn", x:"A festa de Maz e Antdot volta ao Rio para uma noite autoral no Vivo Rio, segundo o Tá Sendo."},
  {id:"d-graus-1120", dt:"2026-11-20", v:"graus", t:"Eclipse com MC GP e Landim", c:["funk"], h:"22:00", p:"R$ 23,99", dur:5, s:"tsGraus1120", x:"Noite de funk paulista e trap, com show do MC GP."},
  {id:"d-dedge-1120", dt:"2026-11-20", v:"dedge", t:"D-Edge Rio 3 anos: Red Night", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:5, s:"tsDedge1120", x:"A festa Red Night comanda mais uma noite do mês de aniversário do clube."},
@@ -907,7 +923,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 06/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 07/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
