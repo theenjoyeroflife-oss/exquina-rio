@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 10/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 11/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -471,7 +471,16 @@ const SRC = {
   tsMunicipal1125: "https://tasendo.com.br/rio-de-janeiro/festas/25-11-orquestra-petrobras-sinfonica-concertos-classicos",
   tsQualistage1126: "https://tasendo.com.br/rio-de-janeiro/festas/seal-rj",
   tsFundicao1127: "https://tasendo.com.br/rio-de-janeiro/festas/major-rd-na-fundicao",
-  tsDedge1127: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-3-anos-2026-11-27"
+  tsDedge1127: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-3-anos-2026-11-27",
+  tsAterro1128: "https://tasendo.com.br/rio-de-janeiro/festas/rio-blues-festival-aterro-do-flamengo-28-e-29-novembro",
+  tsAxiamarina1128: "https://tasendo.com.br/rio-de-janeiro/festas/classicos-do-brasil-alceu-valenca-maria-bethania-vanessa-da-mata",
+  tsCirco1128: "https://tasendo.com.br/rio-de-janeiro/festas/o-baile-do-hamilton-no-circo-voador",
+  tsFundicao1128: "https://tasendo.com.br/rio-de-janeiro/festas/fresno-10-anos-de-a-sinfonia-de-tudo-que-ha-com-nova-orquestra-na-fundicao-progresso",
+  tsQualistage1128: "https://tasendo.com.br/rio-de-janeiro/festas/jorge-vercillo-qualistage-rj-28-11-2026",
+  tsMunicipal1128: "https://tasendo.com.br/rio-de-janeiro/festas/brisa-theatro-municipal",
+  tsAgyto1128: "https://tasendo.com.br/rio-de-janeiro/festas/cynthia-luz-no-rio-de-janeiro",
+  tsDedge1128: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-3-anos-2026-11-28",
+  tsArvrao1128: "https://tasendo.com.br/rio-de-janeiro/festas/baile-funk-no-mirante-do-arvrao-2026-11-28"
 };
 
 const CATS = {
@@ -528,7 +537,9 @@ const V = [
  {id:"clubmunicipal", n:"Club Municipal", b:"Tijuca", r:"norte", t:"clube", a:"Rua Haddock Lobo, 359", lat:-22.9180, lng:-43.2160},
  {id:"citta", n:"Teatro Città", b:"Barra da Tijuca", r:"oeste", t:"teatro", a:"Av. das Américas, 700", lat:-23.0050, lng:-43.3230},
  {id:"municipal", n:"Theatro Municipal", b:"Cinelândia", r:"centro", t:"teatro", a:"Praça Floriano, s/n", lat:-22.9090, lng:-43.1765},
- {id:"fundicao", n:"Fundição Progresso", b:"Lapa", r:"centro", t:"casa", a:"Rua dos Arcos, 24", lat:-22.9136, lng:-43.1808}
+ {id:"fundicao", n:"Fundição Progresso", b:"Lapa", r:"centro", t:"casa", a:"Rua dos Arcos, 24", lat:-22.9136, lng:-43.1808},
+ {id:"axiamarina", n:"Axia Marina da Glória", b:"Glória", r:"centro", t:"jardim", a:"Av. Infante Dom Henrique, s/n", lat:-22.9200, lng:-43.1700},
+ {id:"aterro", n:"Aterro do Flamengo · Posto 3", b:"Flamengo", r:"sul", t:"praca", a:"Praia do Flamengo, perto do Belmonte", lat:-22.9330, lng:-43.1730}
 ];
 
 const SEG = [];
@@ -543,9 +554,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 10/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 11/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-chico-1110", dt:"2026-11-10", v:"ginastico", t:"Chico César", c:["show"], h:"19:00", tbd:1, p:"Ingresso", ck:1, dur:2, s:"skChico", x:"O cantor e compositor paraibano no Teatro Sesc Ginástico."},
  {id:"d-bosque-1112", dt:"2026-11-12", v:"bosque", t:"bsqnt no Bosque", c:["festa"], h:"20:00", p:"R$ 66", ck:1, dur:5, s:"tsBosque1112", x:"Noite com atrações convidadas no bar ao ar livre com vista para o Cristo."},
  {id:"d-casacarnaval-1113", dt:"2026-11-13", v:"casacarnaval", t:"Baile Charme Essência Black", c:["charme"], h:"17:00", p:"Grátis", f:1, dur:5, s:"tsCasacarnaval1113", x:"Sexta de baile charme com o grupo Essência Black e workshop de dança."},
  {id:"d-semfiltro-1113", dt:"2026-11-13", v:"luizgama", t:"RJ Sem Filtro: samba, pagode e funk", c:["funk","festa"], h:"20:00", p:"Grátis até 22h", f:1, dur:8, s:"tsSemFiltro", x:"Festa que junta samba, pagode e funk no Centro. Entrada grátis até as 22h; depois, a partir de R$ 19."},
@@ -595,7 +605,16 @@ const D = [
  {id:"d-experience-1125", dt:"2026-11-25", v:"experience", t:"Joyce Alane", c:["show"], h:"21:00", p:"A partir de R$ 85", dur:3, s:"tsExperience1125", x:"Casa abre às 20h; Joyce Alane sobe ao palco às 21h."},
  {id:"d-qualistage-1126", dt:"2026-11-26", v:"qualistage", t:"Seal", c:["show"], h:"16:00", tbd:1, p:"A partir de R$ 197,50", dur:5, s:"tsQualistage1126", x:"Portões às 16h; o horário do show será informado perto da data."},
  {id:"d-fundicao-1127", dt:"2026-11-27", v:"fundicao", t:"Major RD: turnê Alfa", c:["show"], h:"21:00", p:"A partir de R$ 65", dur:4, s:"tsFundicao1127", x:"O rapper lança a turnê do disco Alfa na Fundição."},
- {id:"d-dedge-1127", dt:"2026-11-27", v:"dedge", t:"D-Edge Rio 3 anos: D-Housers", c:["eletronica"], h:"23:00", p:"A partir de R$ 90", dur:6, s:"tsDedge1127", x:"Noite de house music no mês de aniversário do clube."}
+ {id:"d-dedge-1127", dt:"2026-11-27", v:"dedge", t:"D-Edge Rio 3 anos: D-Housers", c:["eletronica"], h:"23:00", p:"A partir de R$ 90", dur:6, s:"tsDedge1127", x:"Noite de house music no mês de aniversário do clube."},
+ {id:"d-aterro-1128", dt:"2026-11-28", v:"aterro", t:"Rio Blues Festival", c:["show", "cultura"], h:"12:00", p:"Grátis", f:1, dur:9, s:"tsAterro1128", x:"Blues, rock, soul, folk e country no Aterro, com comida e bebida, em 28 e 29/11."},
+ {id:"d-axiamarina-1128", dt:"2026-11-28", v:"axiamarina", t:"Clássicos do Brasil: Alceu Valença, Maria Bethânia e Vanessa da Mata", c:["show"], h:"17:00", p:"A partir de R$ 140", dur:6, s:"tsAxiamarina1128", x:"Festival com setores arena e lounge na Marina da Glória."},
+ {id:"d-circo-1128", dt:"2026-11-28", v:"circo", t:"O Baile do Hamilton", c:["show", "festa"], h:"20:00", p:"A partir de R$ 70", dur:6, s:"tsCirco1128", x:"Abertura de Aline Paes e Bondesom cantando Gal; DJ set de Digital Mandinga."},
+ {id:"d-fundicao-1128", dt:"2026-11-28", v:"fundicao", t:"Fresno com a Nova Orquestra", c:["show"], h:"21:00", p:"Consulte", dur:3, s:"tsFundicao1128", x:"Show sinfônico que celebra os 10 anos do disco A Sinfonia de Tudo Que Há."},
+ {id:"d-qualistage-1128", dt:"2026-11-28", v:"qualistage", t:"Jorge Vercillo", c:["show"], h:"21:30", p:"A partir de R$ 80", dur:3, s:"tsQualistage1128", x:"Show do cantor na Qualistage."},
+ {id:"d-municipal-1128", dt:"2026-11-28", v:"municipal", t:"Brisa: festa de house no Theatro Municipal", c:["eletronica", "festa"], h:"22:00", p:"A partir de R$ 118,80", dur:6, s:"tsMunicipal1128", x:"A festa Brisa comemora um ano com DJs de house no Municipal."},
+ {id:"d-agyto-1128", dt:"2026-11-28", v:"agyto", t:"Cynthia Luz", c:["show"], h:"22:00", p:"A partir de R$ 35", ck:1, dur:4, s:"tsAgyto1128", x:"Show de rap e R&B do Rap Festival no Agyto."},
+ {id:"d-dedge-1128", dt:"2026-11-28", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 100", dur:6, s:"tsDedge1128", x:"Mais uma noite do mês de aniversário do clube."},
+ {id:"d-arvrao-1128", dt:"2026-11-28", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1128", x:"Baile de sábado no alto do Vidigal."}
 ];
 
 const ALL = E.concat(D);
@@ -955,7 +974,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 10/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 11/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
