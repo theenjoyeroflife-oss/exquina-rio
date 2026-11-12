@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 11/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 12/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -480,7 +480,10 @@ const SRC = {
   tsMunicipal1128: "https://tasendo.com.br/rio-de-janeiro/festas/brisa-theatro-municipal",
   tsAgyto1128: "https://tasendo.com.br/rio-de-janeiro/festas/cynthia-luz-no-rio-de-janeiro",
   tsDedge1128: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-3-anos-2026-11-28",
-  tsArvrao1128: "https://tasendo.com.br/rio-de-janeiro/festas/baile-funk-no-mirante-do-arvrao-2026-11-28"
+  tsArvrao1128: "https://tasendo.com.br/rio-de-janeiro/festas/baile-funk-no-mirante-do-arvrao-2026-11-28",
+  tsApoteose1129: "https://tasendo.com.br/rio-de-janeiro/festas/rio-parada-funk-2026",
+  tsCirco1129: "https://tasendo.com.br/rio-de-janeiro/festas/bruno-sutter-executa-50-anos-de-iron-maiden-no-circo-voador",
+  tsQualistage1129: "https://tasendo.com.br/rio-de-janeiro/festas/gipsy-kings-part-sidney-magal-rio-de-janeiro-29-11-2026"
 };
 
 const CATS = {
@@ -539,7 +542,8 @@ const V = [
  {id:"municipal", n:"Theatro Municipal", b:"Cinelândia", r:"centro", t:"teatro", a:"Praça Floriano, s/n", lat:-22.9090, lng:-43.1765},
  {id:"fundicao", n:"Fundição Progresso", b:"Lapa", r:"centro", t:"casa", a:"Rua dos Arcos, 24", lat:-22.9136, lng:-43.1808},
  {id:"axiamarina", n:"Axia Marina da Glória", b:"Glória", r:"centro", t:"jardim", a:"Av. Infante Dom Henrique, s/n", lat:-22.9200, lng:-43.1700},
- {id:"aterro", n:"Aterro do Flamengo · Posto 3", b:"Flamengo", r:"sul", t:"praca", a:"Praia do Flamengo, perto do Belmonte", lat:-22.9330, lng:-43.1730}
+ {id:"aterro", n:"Aterro do Flamengo · Posto 3", b:"Flamengo", r:"sul", t:"praca", a:"Praia do Flamengo, perto do Belmonte", lat:-22.9330, lng:-43.1730},
+ {id:"apoteose", n:"Praça da Apoteose", b:"Santo Cristo", r:"centro", t:"arena", a:"Rua Marquês de Sapucaí, 36", lat:-22.9087, lng:-43.1956}
 ];
 
 const SEG = [];
@@ -554,7 +558,7 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 11/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 12/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
  {id:"d-bosque-1112", dt:"2026-11-12", v:"bosque", t:"bsqnt no Bosque", c:["festa"], h:"20:00", p:"R$ 66", ck:1, dur:5, s:"tsBosque1112", x:"Noite com atrações convidadas no bar ao ar livre com vista para o Cristo."},
  {id:"d-casacarnaval-1113", dt:"2026-11-13", v:"casacarnaval", t:"Baile Charme Essência Black", c:["charme"], h:"17:00", p:"Grátis", f:1, dur:5, s:"tsCasacarnaval1113", x:"Sexta de baile charme com o grupo Essência Black e workshop de dança."},
@@ -614,7 +618,10 @@ const D = [
  {id:"d-municipal-1128", dt:"2026-11-28", v:"municipal", t:"Brisa: festa de house no Theatro Municipal", c:["eletronica", "festa"], h:"22:00", p:"A partir de R$ 118,80", dur:6, s:"tsMunicipal1128", x:"A festa Brisa comemora um ano com DJs de house no Municipal."},
  {id:"d-agyto-1128", dt:"2026-11-28", v:"agyto", t:"Cynthia Luz", c:["show"], h:"22:00", p:"A partir de R$ 35", ck:1, dur:4, s:"tsAgyto1128", x:"Show de rap e R&B do Rap Festival no Agyto."},
  {id:"d-dedge-1128", dt:"2026-11-28", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 100", dur:6, s:"tsDedge1128", x:"Mais uma noite do mês de aniversário do clube."},
- {id:"d-arvrao-1128", dt:"2026-11-28", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1128", x:"Baile de sábado no alto do Vidigal."}
+ {id:"d-arvrao-1128", dt:"2026-11-28", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1128", x:"Baile de sábado no alto do Vidigal."},
+ {id:"d-apoteose-1129", dt:"2026-11-29", v:"apoteose", t:"Rio Parada Funk 2026", c:["funk"], h:"12:00", p:"Grátis", f:1, dur:10, s:"tsApoteose1129", x:"O grande baile de rua reúne as equipes de som e várias gerações de funkeiros."},
+ {id:"d-circo-1129", dt:"2026-11-29", v:"circo", t:"Bruno Sutter executa 50 anos de Iron Maiden", c:["show"], h:"19:00", p:"A partir de R$ 60", dur:4, s:"tsCirco1129", x:"Homenagem aos 50 anos do Iron Maiden na lona do Circo Voador."},
+ {id:"d-qualistage-1129", dt:"2026-11-29", v:"qualistage", t:"Gipsy Kings by Diego Baliardo com Sidney Magal", c:["show"], h:"21:30", p:"A partir de R$ 110", dur:3, s:"tsQualistage1129", x:"Turnê inédita que junta a banda e o cantor num mesmo espetáculo."}
 ];
 
 const ALL = E.concat(D);
@@ -974,7 +981,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 11/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 12/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
