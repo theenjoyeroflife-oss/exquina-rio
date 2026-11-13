@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 12/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 13/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -558,9 +558,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 12/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 13/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-bosque-1112", dt:"2026-11-12", v:"bosque", t:"bsqnt no Bosque", c:["festa"], h:"20:00", p:"R$ 66", ck:1, dur:5, s:"tsBosque1112", x:"Noite com atrações convidadas no bar ao ar livre com vista para o Cristo."},
  {id:"d-casacarnaval-1113", dt:"2026-11-13", v:"casacarnaval", t:"Baile Charme Essência Black", c:["charme"], h:"17:00", p:"Grátis", f:1, dur:5, s:"tsCasacarnaval1113", x:"Sexta de baile charme com o grupo Essência Black e workshop de dança."},
  {id:"d-semfiltro-1113", dt:"2026-11-13", v:"luizgama", t:"RJ Sem Filtro: samba, pagode e funk", c:["funk","festa"], h:"20:00", p:"Grátis até 22h", f:1, dur:8, s:"tsSemFiltro", x:"Festa que junta samba, pagode e funk no Centro. Entrada grátis até as 22h; depois, a partir de R$ 19."},
  {id:"d-sacadura-1113", dt:"2026-11-13", v:"sacadura", t:"JMSN", c:["show"], h:"20:00", p:"A partir de R$ 150", dur:3, s:"tsSacadura1113", x:"Apresentação única do cantor e produtor norte-americano."},
@@ -981,7 +980,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 12/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 13/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
