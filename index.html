@@ -345,7 +345,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 16/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
+    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 17/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
     <p>Rodas de rua cancelam com chuva, mudam de dia e às vezes acabam. Antes de sair, veja o perfil da roda ou da casa. Fontes: Mapa das Rodas de Samba 2025 (Prefeitura do Rio), Riotur, Time Out Rio, Catraca Livre, Diário do Rio, Sopa Cultural, O Globo e outras, linkadas em cada evento.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -565,7 +565,9 @@ const SRC = {
   tsClementina1122: "https://tasendo.com.br/rio-de-janeiro/festas/fruta-no-quintal-2026-11-22",
   tsTerraco1122: "https://tasendo.com.br/rio-de-janeiro/festas/samba-do-xoxo-no-terraco-da-vila-2026-11-22",
   tsClementina1127: "https://tasendo.com.br/rio-de-janeiro/festas/terreiro-de-crioulo-veste-branco-2026-11-27",
-  tsRenas1128: "https://tasendo.com.br/rio-de-janeiro/festas/banda-saldanha-no-renascenca"
+  tsRenas1128: "https://tasendo.com.br/rio-de-janeiro/festas/banda-saldanha-no-renascenca",
+  tsBeco1118: "https://tasendo.com.br/rio-de-janeiro/festas/roda-de-samba-do-aos-novos-compositores-2026-11-18",
+  tsArcos1204: "https://tasendo.com.br/rio-de-janeiro/festas/lapa-do-meu-samba-04-12-26"
 };
 
 const CATS = {
@@ -845,15 +847,14 @@ const E = [
  {id:"nevadakara", v:"nevada", t:"Karaokê do Nevada", c:["karaoke"], d:[3,4,5,6,0], h:"19:00", p:"Consulte", ck:1, dur:7, s:"nevada", x:"Conhecido como o maior karaokê da Tijuca, com sinuca e cerveja gelada, de quarta a domingo até as 2h."}
 ];
 
-// Datas avulsas conferidas no Tá Sendo em 16/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
+// Datas avulsas conferidas no Tá Sendo em 17/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
 const D = [
- {id:"d-renas-1116", dt:"2026-11-16", v:"renas", t:"Samba do Trabalhador com Moacyr Luz", c:["samba"], h:"16:30", p:"R$ 38,99", rep:["trab"], dur:5, s:"tsRenas1116", x:"A roda de toda segunda, em local coberto: com chuva, o samba acontece."},
- {id:"d-beco-1116", dt:"2026-11-16", v:"beco", t:"Arlindinho das Antigas", c:["samba"], h:"18:00", p:"R$ 35 a 39", rep:["arlindinho"], dur:4, s:"tsBeco1116", x:"A roda fixa das segundas do Beco."},
  {id:"d-batuq-1117", dt:"2026-11-17", v:"batuq", t:"Gravação do audiovisual de Dinho Luz", c:["pagode"], h:"17:00", p:"R$ 27,50", dur:5, s:"tsBatuq1117", x:"Terça de pagode na Casinha Amarela da Penha."},
  {id:"d-barlapa-1118", dt:"2026-11-18", v:"barlapa", t:"Revelação", c:["pagode"], h:"18:00", p:"R$ 66", dur:4, s:"tsBarlapa1118", x:"Roda de abertura às 19h; atração principal por volta da meia-noite."},
  {id:"d-scenarium-1118", dt:"2026-11-18", v:"scenarium", t:"Flavia Saolli", c:["samba"], h:"19:00", p:"Consulte", dur:4, s:"tsScenarium1118", x:"Três sets de cerca de uma hora no casarão da Lavradio."},
  {id:"d-essencia-1118", dt:"2026-11-18", v:"essencia", t:"Pagodinho com Guga Nandes e Luidd", c:["pagode"], h:"19:00", p:"Consulte", dur:4, s:"tsEssencia1118", x:"Quarta de pagode no Cachambi, com participações especiais."},
  {id:"d-gema-1118", dt:"2026-11-18", v:"gema", t:"Samba de Lei", c:["samba"], h:"19:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1118", x:"Programação da casa no Tá Sendo."},
+ {id:"d-beco-1118", dt:"2026-11-18", v:"beco", t:"Roda de Samba dos Novos Compositores", c:["samba"], h:"20:00", p:"R$ 23,99", rep:["becoqua"], dur:4, s:"tsBeco1118", x:"Quarta de samba no mês da Consciência Negra, com clima de quintal e comida de boteco."},
  {id:"d-terraco-1119", dt:"2026-11-19", v:"terraco", t:"Arruda", c:["samba"], h:"15:00", p:"Grátis até 19h", f:1, dur:7, s:"tsTerraco1119", x:"Das 15h às 22h. Entrada grátis até 19h com retirada de ingresso; depois, couvert."},
  {id:"d-barlapa-1119", dt:"2026-11-19", v:"barlapa", t:"Fundo de Quintal", c:["samba", "pagode"], h:"18:00", p:"R$ 33", dur:4, s:"tsBarlapa1119", x:"Véspera de feriado. Atração principal por volta da meia-noite."},
  {id:"d-essencia-1119", dt:"2026-11-19", v:"essencia", t:"Samba do Xoxó: gravação do audiovisual", c:["samba", "pagode"], h:"19:00", p:"Consulte", dur:4, s:"tsEssencia1119", x:"Véspera de feriado, com gravação do audiovisual do grupo."},
@@ -905,7 +906,8 @@ const D = [
  {id:"d-gema-1128", dt:"2026-11-28", v:"gema", t:"JP Silva", c:["samba"], h:"22:00", p:"Ingresso", rep:["gema"], dur:3, s:"tsGema1128", x:"Casa abre às 20h30; show às 22h."},
  {id:"d-beco-1129", dt:"2026-11-29", v:"beco", t:"Sede de Samba", c:["samba"], h:"14:00", p:"R$ 28,99", rep:["becodom"], dur:5, s:"tsBeco1129", x:"Tarde de domingo de samba no Beco."},
  {id:"d-beco-1130", dt:"2026-11-30", v:"beco", t:"Arlindinho das Antigas", c:["samba"], h:"18:00", p:"R$ 35 a 39", ck:1, rep:["arlindinho"], dur:4, s:"tsBeco1130", x:"A roda das segundas, com abertura da Banda Bom Aprendiz. O horário listado varia; confira no ingresso."},
- {id:"d-gema-1130", dt:"2026-11-30", v:"gema", t:"Alana Valentte", c:["samba"], h:"20:30", p:"Ingresso", rep:["gema"], dur:3, s:"tsGema1130", x:"Casa abre às 19h30; show às 20h30."}
+ {id:"d-gema-1130", dt:"2026-11-30", v:"gema", t:"Alana Valentte", c:["samba"], h:"20:30", p:"Ingresso", rep:["gema"], dur:3, s:"tsGema1130", x:"Casa abre às 19h30; show às 20h30."},
+ {id:"d-arcos-1204", dt:"2026-12-04", v:"arcos", t:"Lapa do Meu Samba", c:["samba", "pagode"], h:"19:00", p:"Grátis", f:1, dur:4, s:"tsArcos1204", x:"Roda semanal e gratuita embaixo dos Arcos."}
 ];
 const ALL = E.concat(D);
 const VBY = Object.fromEntries(V.concat(SEG).map(v=>[v.id,v]));
@@ -1262,7 +1264,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 16/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
+  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 17/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
   const msg = ST.when==="agora" ? "Nenhuma roda no ar agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
