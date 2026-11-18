@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 17/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 18/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -499,7 +499,14 @@ const SRC = {
   tsCaza1204: "https://tasendo.com.br/rio-de-janeiro/festas/sintonia-com-roge-caza-lagoa-4-12",
   tsEspacohall1204: "https://tasendo.com.br/rio-de-janeiro/festas/matue-e-brandao",
   tsClub631204: "https://tasendo.com.br/rio-de-janeiro/festas/klash-1-ano-de-hyperclash",
-  tsExperience1203: "https://tasendo.com.br/rio-de-janeiro/festas/tranquilo-apresenta-youn-rio-de-janeiro-rj"
+  tsExperience1203: "https://tasendo.com.br/rio-de-janeiro/festas/tranquilo-apresenta-youn-rio-de-janeiro-rj",
+  tsAxiamarina1205: "https://tasendo.com.br/rio-de-janeiro/festas/classicos-do-brasil-fabio-jr-roupa-nova-paulo-ricardo",
+  tsJockey1205: "https://tasendo.com.br/rio-de-janeiro/festas/capital-inicial-rio-de-janeiro-05-12-2026",
+  tsCirco1205: "https://tasendo.com.br/rio-de-janeiro/festas/kiko-dinucci-marcelo-cabral-no-circo-voador",
+  tsFundicao1205: "https://tasendo.com.br/rio-de-janeiro/festas/armandinho-na-fundicao-2026",
+  tsEspacohall1205: "https://tasendo.com.br/rio-de-janeiro/festas/thiaguinho",
+  tsArvrao1205: "https://tasendo.com.br/rio-de-janeiro/festas/suel-no-mirante-do-arvrao-2026-12-05",
+  tsArmazem1205: "https://tasendo.com.br/rio-de-janeiro/festas/submundo-808-rio-de-janeiro"
 };
 
 const CATS = {
@@ -565,7 +572,8 @@ const V = [
  {id:"club63", n:"Club 63", b:"Humaitá", r:"sul", t:"boate", a:"Rua Maria Eugênia, 294", lat:-22.9560, lng:-43.1990},
  {id:"boho", n:"Boho Leblon", b:"Leblon", r:"sul", t:"lounge", a:"Av. Delfim Moreira, 555", lat:-22.9870, lng:-43.2190},
  {id:"futuros", n:"Petrobras Futuros", b:"Flamengo", r:"sul", t:"centro", a:"Rua Dois de Dezembro, 63", lat:-22.9320, lng:-43.1770},
- {id:"espacohall", n:"Espaço Hall", b:"Barra da Tijuca", r:"oeste", t:"casa", a:"Av. Ayrton Senna, 5850", lat:-22.9800, lng:-43.3650}
+ {id:"espacohall", n:"Espaço Hall", b:"Barra da Tijuca", r:"oeste", t:"casa", a:"Av. Ayrton Senna, 5850", lat:-22.9800, lng:-43.3650},
+ {id:"armazem", n:"Armazém da Utopia", b:"Saúde", r:"centro", t:"casa", a:"Av. Rodrigues Alves, Armazém 6", lat:-22.8950, lng:-43.1860}
 ];
 
 const SEG = [];
@@ -580,9 +588,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 17/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 18/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-sesctijuca-1117", dt:"2026-11-17", v:"sesctijuca", t:"Songoro Cosongo 20 anos", c:["show"], h:"18:00", p:"R$ 5", dur:2, s:"tsSesctijuca1117", x:"O grupo comemora duas décadas com músicas dos dois discos, que marcaram o carnaval de rua carioca."},
  {id:"d-ca7-1119", dt:"2026-11-19", v:"vivorio", t:"CA7RIEL & Paco Amoroso", c:["show"], h:"21:00", tbd:1, p:"R$ 260 a 840", ck:1, dur:3, s:"tmCa7", x:"A dupla argentina da Free Spirits World Tour. O show do Rio foi antecipado de 20 para 19/11, segundo a Ticketmaster."},
  {id:"d-tz-1119", dt:"2026-11-19", v:"tz", t:"Baile da Cúpula com MC Maneirinho", c:["funk"], h:"21:00", p:"R$ 30", dur:5, s:"tsTz1119", x:"Show do MC no Soho Lounge, em Padre Miguel. 18+."},
  {id:"d-dedge-1119", dt:"2026-11-19", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:6, s:"tsDedge1119", x:"Mais uma noite do mês de aniversário do clube."},
@@ -636,7 +643,14 @@ const D = [
  {id:"d-jockey-1204", dt:"2026-12-04", v:"jockey", t:"Guilherme Arantes", c:["show"], h:"20:00", p:"A partir de R$ 165", dur:3, s:"tsJockey1204", x:"Show na Brava Arena Jockey; portões às 18h."},
  {id:"d-caza-1204", dt:"2026-12-04", v:"caza", t:"Sintonia com Rogê", c:["show"], h:"21:00", p:"A partir de R$ 40", dur:5, s:"tsCaza1204", x:"O cantor e compositor comanda uma noite de samba e balanço na Lagoa."},
  {id:"d-espacohall-1204", dt:"2026-12-04", v:"espacohall", t:"Matuê e Brandão", c:["show"], h:"22:00", p:"A partir de R$ 60", dur:6, s:"tsEspacohall1204", x:"Casa abre às 22h; primeiro show previsto para a meia-noite."},
- {id:"d-club63-1204", dt:"2026-12-04", v:"club63", t:"Klash: 1 ano de hyperclash", c:["eletronica"], h:"23:00", p:"A partir de R$ 30", dur:6, s:"tsClub631204", x:"Primeira edição da festa dedicada ao hyperclash, no Humaitá."}
+ {id:"d-club63-1204", dt:"2026-12-04", v:"club63", t:"Klash: 1 ano de hyperclash", c:["eletronica"], h:"23:00", p:"A partir de R$ 30", dur:6, s:"tsClub631204", x:"Primeira edição da festa dedicada ao hyperclash, no Humaitá."},
+ {id:"d-arvrao-1205", dt:"2026-12-05", v:"arvrao", t:"Suel", c:["show"], h:"16:00", p:"R$ 55", dur:6, s:"tsArvrao1205", x:"Pagode raiz no alto do Vidigal."},
+ {id:"d-axiamarina-1205", dt:"2026-12-05", v:"axiamarina", t:"Clássicos do Brasil: Fábio Jr., Roupa Nova e Paulo Ricardo", c:["show"], h:"17:00", p:"A partir de R$ 140", dur:6, s:"tsAxiamarina1205", x:"Festival com setores arena e lounge na Marina da Glória."},
+ {id:"d-jockey-1205", dt:"2026-12-05", v:"jockey", t:"Capital Inicial", c:["show"], h:"20:00", p:"A partir de R$ 100", dur:3, s:"tsJockey1205", x:"Show da banda na Brava Arena Jockey."},
+ {id:"d-circo-1205", dt:"2026-12-05", v:"circo", t:"Kiko Dinucci e Marcelo Cabral", c:["show"], h:"20:00", p:"A partir de R$ 80", dur:4, s:"tsCirco1205", x:"Os dois músicos dividem o palco do Circo Voador."},
+ {id:"d-fundicao-1205", dt:"2026-12-05", v:"fundicao", t:"Armandinho", c:["show"], h:"21:00", p:"A partir de R$ 80", dur:4, s:"tsFundicao1205", x:"Show do cantor na Fundição Progresso."},
+ {id:"d-espacohall-1205", dt:"2026-12-05", v:"espacohall", t:"Thiaguinho: turnê Bem Black", c:["show"], h:"21:00", p:"A partir de R$ 50", dur:6, s:"tsEspacohall1205", x:"Casa abre às 21h; show previsto para 0h30."},
+ {id:"d-armazem-1205", dt:"2026-12-05", v:"armazem", t:"Submundo 808", c:["funk"], h:"22:00", p:"A partir de R$ 110", dur:7, s:"tsArmazem1205", x:"Primeira edição no Rio da noite de funk, com Clei Tresk, Th4ys, FP do Trem Bala, RD da DZ7 e outros."}
 ];
 
 const ALL = E.concat(D);
@@ -996,7 +1010,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 17/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 18/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
