@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 19/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 20/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -593,11 +593,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 19/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 20/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-ca7-1119", dt:"2026-11-19", v:"vivorio", t:"CA7RIEL & Paco Amoroso", c:["show"], h:"21:00", tbd:1, p:"R$ 260 a 840", ck:1, dur:3, s:"tmCa7", x:"A dupla argentina da Free Spirits World Tour. O show do Rio foi antecipado de 20 para 19/11, segundo a Ticketmaster."},
- {id:"d-tz-1119", dt:"2026-11-19", v:"tz", t:"Baile da Cúpula com MC Maneirinho", c:["funk"], h:"21:00", p:"R$ 30", dur:5, s:"tsTz1119", x:"Show do MC no Soho Lounge, em Padre Miguel. 18+."},
- {id:"d-dedge-1119", dt:"2026-11-19", v:"dedge", t:"D-Edge Rio 3 anos", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:6, s:"tsDedge1119", x:"Mais uma noite do mês de aniversário do clube."},
  {id:"d-arvrao-1120b", dt:"2026-11-20", v:"arvrao", t:"Swing & Simpatia, Pique Novo e Gustavo Lins", c:["show"], h:"16:00", p:"R$ 33", dur:6, s:"tsArvrao1120b", x:"Feriado de pagode no alto do Vidigal."},
  {id:"d-circo-1120", dt:"2026-11-20", v:"circo", t:"Ajulliacosta: data extra", c:["show"], h:"20:00", p:"A partir de R$ 90", dur:5, s:"tsCirco1120", x:"Turnê do álbum Novo Testamento no Dia da Consciência Negra."},
  {id:"d-dawn-1120", dt:"2026-11-20", v:"vivorio", t:"Dawn Patrol Rio de Janeiro", c:["eletronica"], h:"21:00", p:"Ingresso", dur:6, s:"tsDawn", x:"A festa de Maz e Antdot volta ao Rio para uma noite autoral no Vivo Rio, segundo o Tá Sendo."},
@@ -1019,7 +1016,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 19/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 20/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");

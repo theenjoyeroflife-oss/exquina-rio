@@ -345,7 +345,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 19/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
+    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 20/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
     <p>Rodas de rua cancelam com chuva, mudam de dia e às vezes acabam. Antes de sair, veja o perfil da roda ou da casa. Fontes: Mapa das Rodas de Samba 2025 (Prefeitura do Rio), Riotur, Time Out Rio, Catraca Livre, Diário do Rio, Sopa Cultural, O Globo e outras, linkadas em cada evento.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -850,14 +850,8 @@ const E = [
  {id:"nevadakara", v:"nevada", t:"Karaokê do Nevada", c:["karaoke"], d:[3,4,5,6,0], h:"19:00", p:"Consulte", ck:1, dur:7, s:"nevada", x:"Conhecido como o maior karaokê da Tijuca, com sinuca e cerveja gelada, de quarta a domingo até as 2h."}
 ];
 
-// Datas avulsas conferidas no Tá Sendo em 19/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
+// Datas avulsas conferidas no Tá Sendo em 20/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
 const D = [
- {id:"d-terraco-1119", dt:"2026-11-19", v:"terraco", t:"Arruda", c:["samba"], h:"15:00", p:"Grátis até 19h", f:1, dur:7, s:"tsTerraco1119", x:"Das 15h às 22h. Entrada grátis até 19h com retirada de ingresso; depois, couvert."},
- {id:"d-barlapa-1119", dt:"2026-11-19", v:"barlapa", t:"Fundo de Quintal", c:["samba", "pagode"], h:"18:00", p:"R$ 33", dur:4, s:"tsBarlapa1119", x:"Véspera de feriado. Atração principal por volta da meia-noite."},
- {id:"d-essencia-1119", dt:"2026-11-19", v:"essencia", t:"Samba do Xoxó: gravação do audiovisual", c:["samba", "pagode"], h:"19:00", p:"Consulte", dur:4, s:"tsEssencia1119", x:"Véspera de feriado, com gravação do audiovisual do grupo."},
- {id:"d-gema-1119", dt:"2026-11-19", v:"gema", t:"Andrezão do Cacique", c:["samba", "pagode"], h:"19:30", p:"Ingresso", rep:["gema"], dur:4, s:"tsGema1119", x:"Véspera do feriado da Consciência Negra."},
- {id:"d-scenarium-1119", dt:"2026-11-19", v:"scenarium", t:"Yago Costa convida Viny Santa Fé", c:["samba", "pagode"], h:"20:00", tbd:1, p:"Consulte", dur:4, s:"tsScenarium1119", x:"Véspera do feriado da Consciência Negra."},
- {id:"d-beco-1119", dt:"2026-11-19", v:"beco", t:"Encontros Casuais com Inácio Rios e Mosquito", c:["samba"], h:"21:00", p:"R$ 38,99", rep:["casuais"], dur:4, s:"tsBeco1119", x:"Véspera de feriado. Casa abre às 18h; roda às 21h."},
  {id:"d-renas-1120", dt:"2026-11-20", v:"renas", t:"Tributo ao Reinaldo: o povo canta o Rei", c:["samba", "pagode"], h:"13:00", p:"R$ 23,99", dur:6, s:"tsRenas1120", x:"Celebração do Dia da Consciência Negra no clube do Andaraí."},
  {id:"d-terraco-1120", dt:"2026-11-20", v:"terraco", t:"Quintal da Magia e Bota Dendê", c:["samba", "pagode"], h:"15:00", p:"Grátis até 18h", f:1, dur:7, s:"tsTerraco1120", x:"Feriado das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
  {id:"d-clementina-1120", dt:"2026-11-20", v:"clementina", t:"Consciência Negra: Cacique de Ramos, Samba do Xoxó e Dowglas Diniz", c:["samba"], h:"16:00", p:"R$ 33,99", dur:7, s:"tsClementina1120", x:"Feriado com a roda do Cacique, o Força da Cor, o intérprete da Mangueira e o Xoxó."},
@@ -1264,7 +1258,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 19/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
+  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 20/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
   const msg = ST.when==="agora" ? "Nenhuma roda no ar agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
