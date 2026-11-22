@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 21/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 22/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -593,17 +593,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 21/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 22/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-arvrao-1121b", dt:"2026-11-21", v:"arvrao", t:"Bom Gosto e Farias", c:["show"], h:"16:00", p:"R$ 33", dur:5, s:"tsArvrao1121b", x:"Pagode raiz no alto do Vidigal."},
- {id:"d-farmasi-1121", dt:"2026-11-21", v:"farmasi", t:"Mariah Carey", c:["show"], h:"16:00", p:"A partir de R$ 247,50", ck:1, dur:6, s:"tsFarmasi1121", x:"Show natalino da cantora; 16h é o horário listado no Tá Sendo, confirme no ingresso."},
- {id:"d-experience-1121", dt:"2026-11-21", v:"experience", t:"MC Taya, Majis e Midorii Kido", c:["show", "funk"], h:"20:00", p:"R$ 49,50", dur:5, s:"tsExperience1121", x:"Shows na Lapa; abertura da casa às 20h. 18+."},
- {id:"d-circo-1121", dt:"2026-11-21", v:"circo", t:"Rockeria 14 anos", c:["festa", "show"], h:"21:00", p:"A partir de R$ 60", dur:6, s:"tsCirco1121", x:"A festa comemora 14 anos com DJ Leo Paes Leme e convidados na pista e show da Vaa Surf Band."},
- {id:"d-qualistage-1121", dt:"2026-11-21", v:"qualistage", t:"Dino Fonseca: Barzim de Rock", c:["show"], h:"21:30", p:"A partir de R$ 85", dur:4, s:"tsQualistage1121", x:"Turnê de mais de três horas de clássicos do rock."},
- {id:"d-amanha-1121", dt:"2026-11-21", v:"amanha", t:"Baile do Momo", c:["festa"], h:"23:00", p:"Ingresso (open bar)", ck:1, dur:5, s:"tsAmanha1121", x:"Baile com open bar no Museu do Amanhã."},
- {id:"d-dedge-1121", dt:"2026-11-21", v:"dedge", t:"D-Edge Rio 3 anos: D.Cassete & Rewind", c:["eletronica"], h:"23:00", p:"A partir de R$ 80", dur:5, s:"tsDedge1121", x:"Noite do selo D.Cassete & Rewind no mês de aniversário do clube."},
- {id:"d-estnet-1121", dt:"2026-11-21", v:"estnet", t:"Me Chama de Pop: especial Adéla, Charli XCX e Slayyyter", c:["festa"], h:"23:00", p:"R$ 28,99", dur:5, s:"tsEstnet1121", x:"Festa de pop com edição dedicada às três cantoras."},
- {id:"d-arvrao-1121", dt:"2026-11-21", v:"arvrao", t:"Baile funk no Mirante do Arvrão", c:["funk"], h:"23:30", p:"R$ 33", dur:5, s:"tsArvrao1121", x:"Baile de sábado no alto do Vidigal."},
  {id:"d-jockey-1122", dt:"2026-11-22", v:"jockey", t:"Alive Legacy: The Pyramid Returns", c:["eletronica"], h:"18:00", p:"A partir de R$ 80", dur:5, s:"tsJockey1122", x:"A experiência audiovisual da pirâmide volta ao Rio 20 anos depois."},
  {id:"d-experience-1122", dt:"2026-11-22", v:"experience", t:"Bullet Bane e Bad Luv", c:["show"], h:"19:00", p:"A partir de R$ 70", dur:4, s:"tsExperience1122", x:"As duas bandas nas turnês dos discos novos."},
  {id:"d-municipal-1125", dt:"2026-11-25", v:"municipal", t:"Orquestra Petrobras Sinfônica", c:["cultura", "show"], h:"19:00", p:"A partir de R$ 10", dur:2, s:"tsMunicipal1125", x:"Série de concertos clássicos; não há entrada na sala depois do início."},
@@ -1009,7 +1000,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 21/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 22/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
