@@ -345,7 +345,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 22/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
+    <p><b>Como funciona.</b> A agenda junta duas coisas: a programação fixa de cada lugar (toda segunda, 1º sábado do mês etc.), recalculada todo dia, e as datas avulsas lidas nos perfis de Instagram e nas agendas das casas (Tá Sendo) em 23/11/2026. Quando um post anuncia a atração de uma noite, ele substitui a linha genérica daquele dia. ≈ marca horário aproximado; "a def." é horário ainda não divulgado; "necessário confirmar" marca programação de fontes mais antigas ou que varia muito.</p>
     <p>Rodas de rua cancelam com chuva, mudam de dia e às vezes acabam. Antes de sair, veja o perfil da roda ou da casa. Fontes: Mapa das Rodas de Samba 2025 (Prefeitura do Rio), Riotur, Time Out Rio, Catraca Livre, Diário do Rio, Sopa Cultural, O Globo e outras, linkadas em cada evento.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -854,15 +854,8 @@ const E = [
  {id:"nevadakara", v:"nevada", t:"Karaokê do Nevada", c:["karaoke"], d:[3,4,5,6,0], h:"19:00", p:"Consulte", ck:1, dur:7, s:"nevada", x:"Conhecido como o maior karaokê da Tijuca, com sinuca e cerveja gelada, de quarta a domingo até as 2h."}
 ];
 
-// Datas avulsas conferidas no Tá Sendo em 22/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
+// Datas avulsas conferidas no Tá Sendo em 23/11/2026 (o navegador com o Instagram não estava disponível). rep = eventos fixos que essa data substitui; tbd = horário não divulgado.
 const D = [
- {id:"d-cac-1122", dt:"2026-11-22", v:"cac", t:"Roda do Cacique: Grupo Caciqueando e Margarete Mendes", c:["samba", "pagode", "feijoada"], h:"13:00", p:"Grátis", f:1, rep:["cacique"], dur:9, s:"tsCac1122", x:"Entrada franca e feijoada à tarde, com Batuque de Angola, Vander Carvalho e Resenha Total Caravana como convidados."},
- {id:"d-renas-1122", dt:"2026-11-22", v:"renas", t:"Pagode do Coruja com Suel", c:["pagode"], h:"15:00", p:"R$ 28,99", dur:6, s:"tsRenas1122", x:"Segunda edição do projeto do compositor Suel, depois de uma estreia lotada."},
- {id:"d-clementina-1122", dt:"2026-11-22", v:"clementina", t:"Fruta no Quintal: Fruta do Pé", c:["samba"], h:"15:00", p:"R$ 33,99", dur:6, s:"tsClementina1122", x:"A roda de samba de raiz da Zona Oeste volta ao Quintal da Clementina."},
- {id:"d-terraco-1122", dt:"2026-11-22", v:"terraco", t:"Samba do Xoxó", c:["samba"], h:"15:00", p:"Grátis até 18h", f:1, dur:7, s:"tsTerraco1122", x:"Das 15h às 22h. Entrada grátis até 18h com retirada de ingresso; depois, couvert."},
- {id:"d-batuq-1122", dt:"2026-11-22", v:"batuq", t:"Saideiras Casuais, Marcelle Motta, Marina Iris e Quilombo de Irajá", c:["samba", "pagode"], h:"16:00", p:"R$ 27,50", dur:5, s:"tsBatuq1122", x:"Encontro de rodas na Casinha Amarela da Penha."},
- {id:"d-essencia-1122", dt:"2026-11-22", v:"essencia", t:"Roda de Samba do Vinny Santa Fé", c:["samba"], h:"16:00", p:"Consulte", dur:5, s:"tsEssencia1122", x:"Domingo de samba no Cachambi, com futebol ao vivo no telão."},
- {id:"d-beco-1122", dt:"2026-11-22", v:"beco", t:"Banda Beco do Rato", c:["samba", "feijoada"], h:"16:00", p:"R$ 23,99", rep:["becodom"], dur:4, s:"tsBeco1122", x:"Almoço a partir das 12h; a banda começa às 16h."},
  {id:"d-renas-1123", dt:"2026-11-23", v:"renas", t:"Samba do Trabalhador com Moacyr Luz", c:["samba"], h:"16:30", p:"R$ 38,99", rep:["trab"], dur:5, s:"tsRenas1123", x:"A roda de toda segunda, em local coberto: com chuva, o samba acontece."},
  {id:"d-beco-1123", dt:"2026-11-23", v:"beco", t:"Arlindinho das Antigas", c:["samba"], h:"18:00", p:"R$ 35 a 39", rep:["arlindinho"], dur:4, s:"tsBeco1123", x:"A roda fixa das segundas, com abertura da Banda Bom Aprendiz."},
  {id:"d-gema-1123", dt:"2026-11-23", v:"gema", t:"Três a Varejo", c:["samba"], h:"20:30", p:"Ingresso", rep:["gema"], dur:3, s:"tsGema1123", x:"Casa abre às 19h30; show às 20h30. Mesas reservadas até as 21h."},
@@ -1249,7 +1242,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 22/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
+  const note = `<p class="note"><b>Atualizado com o Instagram e a agenda das casas em 23/11.</b> Linhas com o selo <b>anunciado no Instagram</b> vieram de posts com data; as demais seguem a programação fixa da roda ou do bar. ≈ é horário aproximado; <b>necessário confirmar</b> pede checagem no perfil antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : " Em cada dia, os eventos seguem a popularidade do gênero no Rio (samba, pagode, bossa nova, rock…), com os <b>botequins</b> na frente."}</p>`;
   const msg = ST.when==="agora" ? "Nenhuma roda no ar agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
