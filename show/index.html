@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 23/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 24/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -510,7 +510,11 @@ const SRC = {
   tsAxiamarina1206: "https://tasendo.com.br/rio-de-janeiro/festas/classicos-do-brasil-pepeu-gomes-paralamas-caetano-veloso",
   tsViaduto1206: "https://tasendo.com.br/rio-de-janeiro/festas/pagodao-de-madureira-2026-12-06",
   tsCitta1206: "https://tasendo.com.br/rio-de-janeiro/festas/moacyr-franco",
-  tsPlanet1206: "https://tasendo.com.br/rio-de-janeiro/festas/supremo-rap-festival-2026"
+  tsPlanet1206: "https://tasendo.com.br/rio-de-janeiro/festas/supremo-rap-festival-2026",
+  tsJockey1211: "https://tasendo.com.br/rio-de-janeiro/festas/kid-abelha-rio-de-janeiro-11-12-2026-venda-geral",
+  tsCaza1211: "https://tasendo.com.br/rio-de-janeiro/festas/caza-das-atleticas-com-fp-do-trem-bala-caza-lagoa-11-12",
+  tsDedge1211: "https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-apresenta-giu-sounds-cool",
+  tsVisaovidigal1211: "https://tasendo.com.br/rio-de-janeiro/festas/rave-in-rio-vidigal-december-11"
 };
 
 const CATS = {
@@ -578,7 +582,8 @@ const V = [
  {id:"futuros", n:"Petrobras Futuros", b:"Flamengo", r:"sul", t:"centro", a:"Rua Dois de Dezembro, 63", lat:-22.9320, lng:-43.1770},
  {id:"espacohall", n:"Espaço Hall", b:"Barra da Tijuca", r:"oeste", t:"casa", a:"Av. Ayrton Senna, 5850", lat:-22.9800, lng:-43.3650},
  {id:"armazem", n:"Armazém da Utopia", b:"Saúde", r:"centro", t:"casa", a:"Av. Rodrigues Alves, Armazém 6", lat:-22.8950, lng:-43.1860},
- {id:"planet", n:"New Planet Music", b:"Cascadura", r:"norte", t:"casa", a:"Av. Ernani Cardoso, 66", lat:-22.8820, lng:-43.3290}
+ {id:"planet", n:"New Planet Music", b:"Cascadura", r:"norte", t:"casa", a:"Av. Ernani Cardoso, 66", lat:-22.8820, lng:-43.3290},
+ {id:"visaovidigal", n:"Visão Vidigal", b:"Vidigal", r:"sul", t:"lounge", a:"Rua Major Toja Martinez Filho, 126", lat:-22.9935, lng:-43.2350}
 ];
 
 const SEG = [];
@@ -593,7 +598,7 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 23/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 24/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
  {id:"d-municipal-1125", dt:"2026-11-25", v:"municipal", t:"Orquestra Petrobras Sinfônica", c:["cultura", "show"], h:"19:00", p:"A partir de R$ 10", dur:2, s:"tsMunicipal1125", x:"Série de concertos clássicos; não há entrada na sala depois do início."},
  {id:"d-axia-1125", dt:"2026-11-25", v:"axia", t:"Atom Pink Floyd: Ten Years in the Machine", c:["show"], h:"20:00", p:"R$ 200", dur:3, s:"tsAxia1125", x:"O tributo ao Pink Floyd comemora dez anos de turnê."},
@@ -638,7 +643,11 @@ const D = [
  {id:"d-planet-1206", dt:"2026-12-06", v:"planet", t:"Supremo RAP Festival 2026", c:["show"], h:"14:00", p:"Grátis", f:1, dur:8, s:"tsPlanet1206", x:"Festival com a nova geração do rap carioca em Cascadura."},
  {id:"d-axiamarina-1206", dt:"2026-12-06", v:"axiamarina", t:"Clássicos do Brasil: Pepeu Gomes, Paralamas do Sucesso e Caetano Veloso", c:["show"], h:"15:00", p:"A partir de R$ 140", dur:7, s:"tsAxiamarina1206", x:"Festival com setores arena e lounge na Marina da Glória."},
  {id:"d-viaduto-1206", dt:"2026-12-06", v:"viaduto", t:"Pagodão de Madureira", c:["charme", "festa"], h:"15:00", p:"Grátis", f:1, dur:6, s:"tsViaduto1206", x:"Tarde de roda de samba e pagode sob o viaduto, com DJ Castelinho tocando charme e black music nos intervalos."},
- {id:"d-citta-1206", dt:"2026-12-06", v:"citta", t:"Moacyr Franco", c:["show"], h:"18:00", p:"A partir de R$ 115,79", dur:3, s:"tsCitta1206", x:"Aos 90 anos, o cantor volta ao Rio depois de sete anos."}
+ {id:"d-citta-1206", dt:"2026-12-06", v:"citta", t:"Moacyr Franco", c:["show"], h:"18:00", p:"A partir de R$ 115,79", dur:3, s:"tsCitta1206", x:"Aos 90 anos, o cantor volta ao Rio depois de sete anos."},
+ {id:"d-visaovidigal-1211", dt:"2026-12-11", v:"visaovidigal", t:"Rave in Rio: um ano", c:["eletronica"], h:"18:00", p:"A partir de R$ 20", dur:8, s:"tsVisaovidigal1211", x:"A festa comemora um ano no Vidigal, onde começou."},
+ {id:"d-jockey-1211", dt:"2026-12-11", v:"jockey", t:"Kid Abelha", c:["show"], h:"20:00", p:"A partir de R$ 145", dur:3, s:"tsJockey1211", x:"Show da banda na Brava Arena Jockey."},
+ {id:"d-caza-1211", dt:"2026-12-11", v:"caza", t:"Caza das Atléticas com FP do Trem Bala", c:["funk", "festa"], h:"21:00", p:"A partir de R$ 40", dur:6, s:"tsCaza1211", x:"Noite com o DJ e produtor FP do Trem Bala na Caza Lagoa."},
+ {id:"d-dedge-1211", dt:"2026-12-11", v:"dedge", t:"Giu Sounds Cool", c:["eletronica"], h:"23:00", p:"Consulte", dur:6, s:"tsDedge1211", x:"A label party da DJ Giu chega ao Rio."}
 ];
 
 const ALL = E.concat(D);
@@ -998,7 +1007,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 23/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 24/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
