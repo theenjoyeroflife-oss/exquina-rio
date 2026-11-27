@@ -343,7 +343,7 @@ footer p{margin:0 0 8px; max-width:68ch}
   <main id="view"></main>
 
   <footer>
-    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 26/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
+    <p><b>Como funciona.</b> A agenda junta a programação fixa de alguns lugares (o baile do Viaduto aos sábados, a Feira Hippie aos domingos, as exposições do CCBB) com datas únicas de shows e festas, conferidas em 27/11/2026 no Tá Sendo, no Songkick, em sites de ingresso e na imprensa. Cada evento leva o link da fonte.</p>
     <p>Data, horário e preço mudam. <b>a def.</b> quer dizer horário a confirmar no ingresso, e <b>necessário confirmar</b> pede checagem antes de sair.</p>
     <p>Salvos, "vou" e ocultos ficam guardados só neste navegador.</p>
   </footer>
@@ -525,7 +525,8 @@ const SRC = {
   tsArenabangu1212: "https://tasendo.com.br/rio-de-janeiro/festas/jorge-vercillo-12dez-sab-arena-bangu-bangu-shopping",
   tsArenabangu1213: "https://tasendo.com.br/rio-de-janeiro/festas/alexandre-pires-13dez-dom-arena-bangu-bangu-shopping",
   tsSacadura1213: "https://tasendo.com.br/rio-de-janeiro/festas/testament-no-rio-de-janeiro",
-  tsPlanet1213: "https://tasendo.com.br/rio-de-janeiro/festas/black-soul-power"
+  tsPlanet1213: "https://tasendo.com.br/rio-de-janeiro/festas/black-soul-power",
+  tsExperience1214: "https://tasendo.com.br/rio-de-janeiro/festas/tranquilo-apresenta-medulla-rio-de-janeiro-rj"
 };
 
 const CATS = {
@@ -611,9 +612,8 @@ const E = [
  {id:"amazonicas", v:"ccbb", t:"Exposição Amazônicas: poéticas femininas", c:["cultura"], d:[6,0], h:"09:00", p:"Consulte", ck:1, dur:11, de:"2026-09-02", ate:"2026-11-16", s:"ccbb", x:"Últimos dias: a mostra fica no CCBB até 16/11."}
 ];
 
-// Datas únicas conferidas entre 04 e 26/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
+// Datas únicas conferidas entre 04 e 27/11/2026 (Tá Sendo). tbd = horário a confirmar no ingresso.
 const D = [
- {id:"d-qualistage-1126", dt:"2026-11-26", v:"qualistage", t:"Seal", c:["show"], h:"16:00", tbd:1, p:"A partir de R$ 197,50", dur:5, s:"tsQualistage1126", x:"Portões às 16h; o horário do show será informado perto da data."},
  {id:"d-fundicao-1127", dt:"2026-11-27", v:"fundicao", t:"Major RD: turnê Alfa", c:["show"], h:"21:00", p:"A partir de R$ 65", dur:4, s:"tsFundicao1127", x:"O rapper lança a turnê do disco Alfa na Fundição."},
  {id:"d-dedge-1127", dt:"2026-11-27", v:"dedge", t:"D-Edge Rio 3 anos: D-Housers", c:["eletronica"], h:"23:00", p:"A partir de R$ 90", dur:6, s:"tsDedge1127", x:"Noite de house music no mês de aniversário do clube."},
  {id:"d-axiamarina-1128b", dt:"2026-11-28", v:"axiamarina", t:"Innersounds: Sea of Sounds", c:["eletronica"], h:"10:00", p:"A partir de R$ 190", dur:8, s:"tsAxiamarina1128b", x:"A Innersounds leva a pista para o mar, num encontro para poucas pessoas."},
@@ -668,7 +668,8 @@ const D = [
  {id:"d-club63-1212", dt:"2026-12-12", v:"club63", t:"Girls Techno Club #4", c:["eletronica"], h:"23:00", p:"A partir de R$ 30", dur:6, s:"tsClub631212", x:"Quarta edição da festa de techno no Humaitá."},
  {id:"d-arenabangu-1213", dt:"2026-12-13", v:"arenabangu", t:"Alexandre Pires", c:["show"], h:"17:00", p:"A partir de R$ 52,25", dur:5, s:"tsArenabangu1213", x:"Show completo e DJs nos 4 anos da Arena Bangu. 17h é a abertura dos portões."},
  {id:"d-sacadura-1213", dt:"2026-12-13", v:"sacadura", t:"Testament, Municipal Waste e Immolation", c:["show"], h:"18:00", p:"A partir de R$ 300", dur:5, s:"tsSacadura1213", x:"Turnê conjunta das três bandas de metal."},
- {id:"d-planet-1213", dt:"2026-12-13", v:"planet", t:"Black Soul Power", c:["charme", "festa"], h:"18:00", p:"Grátis", f:1, ck:1, dur:6, s:"tsPlanet1213", x:"Clássicos da black music em três andares, com pista e karaokê."}
+ {id:"d-planet-1213", dt:"2026-12-13", v:"planet", t:"Black Soul Power", c:["charme", "festa"], h:"18:00", p:"Grátis", f:1, ck:1, dur:6, s:"tsPlanet1213", x:"Clássicos da black music em três andares, com pista e karaokê."},
+ {id:"d-experience-1214", dt:"2026-12-14", v:"experience", t:"Medulla", c:["show"], h:"19:00", p:"A partir de R$ 35", dur:3, s:"tsExperience1214", x:"Show da banda na série Tranquilo Apresenta."}
 ];
 
 const ALL = E.concat(D);
@@ -1028,7 +1029,7 @@ function viewAgenda(data){
   // Com localização (mesmo sem o filtro "Perto de mim"), cada dia vai do mais perto ao mais longe.
   if(GEO.pos) list = list.slice().sort((a,b)=> a.day.i-b.day.i || (a.state==="now")-(b.state==="now") || kmTo(a.v)-kmTo(b.v) || genOrd(a.e)-genOrd(b.e) || a.start-b.start);
   const hiddenCount = S.hidden.size;
-  const note = `<p class="note"><b>Datas conferidas em 26/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
+  const note = `<p class="note"><b>Datas conferidas em 27/11.</b> Linhas com o selo <b>data confirmada</b> são shows e festas com dia marcado; as demais seguem a programação fixa do lugar. <b>a def.</b> é horário a confirmar no ingresso; <b>necessário confirmar</b> pede checagem antes de sair.${GEO.pos ? " Em cada dia, os eventos vão do <b>mais perto de você</b> ao mais longe." : ""}</p>`;
   const msg = ST.when==="agora" ? "Nada rolando agora com esses filtros. Tente “Hoje” ou “Em breve”." : "Tire algum filtro para ver mais.";
   return nearNote() + note + renderSections(list, msg, true) +
     (hiddenCount ? `<p class="hiddeninfo">${hiddenCount} evento${hiddenCount>1?"s":""} oculto${hiddenCount>1?"s":""}. <button class="linkbtn" data-unhide="all">Mostrar de novo</button></p>` : "");
